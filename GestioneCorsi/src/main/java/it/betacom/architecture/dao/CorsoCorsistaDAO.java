@@ -35,8 +35,8 @@ public class CorsoCorsistaDAO implements DAOConstants{
 			rowSet.setCommand(SELECT_CORSOCORSISTA);
 			rowSet.execute(conn);
 			rowSet.moveToInsertRow();
-			rowSet.updateDouble(1, entity.getIdCorsista());
-			rowSet.updateDouble(2, entity.getIdCorso());
+			rowSet.updateLong(1, entity.getIdCorso());
+			rowSet.updateLong(2, entity.getIdCorsista());
 			rowSet.insertRow();
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
@@ -54,16 +54,12 @@ public class CorsoCorsistaDAO implements DAOConstants{
 			ps = conn.prepareStatement(SELECT_CORSO_CORSISTA_ID);
 			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
+			long idCorso;
 			while(rs.next()) {
-				corso = new Corso();
-				corso.setIdCorso(rs.getLong(1));
-				corso.setIdDocente(rs.getLong(2));
-				corso.setNomeCorso(rs.getString(3));
-				corso.setDataInizio(new java.util.Date(rs.getDate(4).getTime()));
-				corso.setDataFine(new java.util.Date(rs.getDate(5).getTime()));
-				corso.setCosto(rs.getDouble(6));
-				corso.setCommenti(rs.getString(7));
-				corso.setAula(rs.getString(8));
+				idCorso = rs.getLong(1);
+				
+				corso = CorsoDAO.getFactory().getById(conn, idCorso);
+				
 				corsi.add(corso);
 				
 			}
@@ -74,7 +70,7 @@ public class CorsoCorsistaDAO implements DAOConstants{
 		return corsi;
 	}
 	
-	public int getNumCorsistaBYId(Connection conn, long id) throws DAOException {
+	public int getNumCorsistaBYIdCorso(Connection conn, long id) throws DAOException {
 		int n = 0;
 		
 		PreparedStatement ps;
