@@ -1,6 +1,6 @@
 package it.betacom.architecture.dao;
 
-public interface DAOCostants {
+public interface DAOConstants {
 	
 	//------Admin
 	String SELECT_ADMIN_ID = "select * from admin where username = ?";
