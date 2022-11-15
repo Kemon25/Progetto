@@ -5,12 +5,12 @@ import java.util.Date;
 public class Corso {
 	private long idCorso;
 	private long idDocente;
-	String nomeCorso;
-	Date dataInizio;
-	Date dataFine;
-	double costo;
-	String commenti;
-	String aula;
+	private String nomeCorso;
+	private Date dataInizio;
+	private Date dataFine;
+	private double costo;
+	private String commenti;
+	private String aula;
 	
 	
 	public long getIdCorso() {
