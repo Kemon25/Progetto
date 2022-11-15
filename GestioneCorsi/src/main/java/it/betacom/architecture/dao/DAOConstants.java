@@ -19,7 +19,7 @@ public interface DAOConstants {
 	String DELETE_COSISTA = "delete from corsista where id_corsista = ?";
 	
 	//------Corso_Corsista
-	String SELECT_CORSOCORSISTA = "select * from corso";
+	String SELECT_CORSOCORSISTA = "select * from corso_corsista";
 	String SELECT_CORSO_CORSISTA_ID = "select * from corso_corsista where id_corsista = ?";
 	String SELECT_NCORSISTA_CORSO_ID = "select count(*) from corso_corsista where id_corso = ?";
 	

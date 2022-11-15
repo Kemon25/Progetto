@@ -35,8 +35,8 @@ public class CorsoCorsistaDAO implements DAOConstants{
 			rowSet.setCommand(SELECT_CORSOCORSISTA);
 			rowSet.execute(conn);
 			rowSet.moveToInsertRow();
-			rowSet.updateInt(1, entity.getIdCorsista());
-			rowSet.updateInt(2, entity.getIdCorso());
+			rowSet.updateDouble(1, entity.getIdCorsista());
+			rowSet.updateDouble(2, entity.getIdCorso());
 			rowSet.insertRow();
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
@@ -75,7 +75,7 @@ public class CorsoCorsistaDAO implements DAOConstants{
 	}
 	
 	public int getNumCorsistaBYId(Connection conn, long id) throws DAOException {
-		int n =0;
+		int n = 0;
 		
 		PreparedStatement ps;
 		try {

@@ -1,19 +1,19 @@
 package it.betacom.businesscomponent.model;
 
 public class CorsoCorsista {
-	private int idCorso;
-	private int idCorsista;
+	private long idCorso;
+	private long idCorsista;
 	
-	public int getIdCorso() {
+	public long getIdCorso() {
 		return idCorso;
 	}
-	public void setIdCorso(int idCorso) {
+	public void setIdCorso(long idCorso) {
 		this.idCorso = idCorso;
 	}
-	public int getIdCorsista() {
+	public long getIdCorsista() {
 		return idCorsista;
 	}
-	public void setIdCorsista(int idCorsista) {
+	public void setIdCorsista(long idCorsista) {
 		this.idCorsista = idCorsista;
 	}
 	
