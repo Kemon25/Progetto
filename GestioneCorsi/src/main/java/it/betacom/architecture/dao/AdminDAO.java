@@ -11,20 +11,13 @@ import javax.sql.rowset.RowSetProvider;
 import it.betacom.businesscomponent.model.Admin;
 
 public class AdminDAO implements DAOConstants{
-	public static AdminDAO getFactory() throws DAOException {
-		return new AdminDAO();
-	}
-
-	// CachedRowSet prevede la sincronizzazione, quseto lo è già
-	private CachedRowSet rowSet;
 
 	// Costruttore AdminDAO
-	private AdminDAO() throws DAOException {
-		try {
-			rowSet = RowSetProvider.newFactory().createCachedRowSet();
-		} catch (SQLException sql) {
-			throw new DAOException(sql);
-		}
+	private AdminDAO() {
+	}
+	
+	public static AdminDAO getFactory() {
+		return new AdminDAO();
 	}
 	
 	public Admin getByUsername(Connection conn, String username) throws DAOException {
