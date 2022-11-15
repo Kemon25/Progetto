@@ -1,4 +1,4 @@
-package test.it.betacom.architecture.dao;
+package test.it.betacom.businesscomponent.security;
 
 import static org.junit.jupiter.api.Assertions.*;
 
