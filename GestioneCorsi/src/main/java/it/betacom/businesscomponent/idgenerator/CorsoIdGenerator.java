@@ -10,28 +10,21 @@ import it.betacom.architecture.dao.DAOConstants;
 import it.betacom.architecture.dao.DAOException;
 import it.betacom.architecture.dbaccess.DBAccess;
 
-public class CorsoIdGenerator implements IdGeneratorInterface,DAOConstants{
+public class CorsoIdGenerator implements IdGeneratorInterface, DAOConstants {
 	private Connection conn;
 	private static CorsoIdGenerator idGen;
 	private Statement stmt;
 	private ResultSet rs;
-	
-	
-	
-	
+
 	private CorsoIdGenerator() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 	}
-	
+
 	public static CorsoIdGenerator getIstance() throws ClassNotFoundException, DAOException, IOException {
-		if(idGen == null)
+		if (idGen == null)
 			idGen = new CorsoIdGenerator();
 		return idGen;
 	}
-
-
-
-
 
 	@Override
 	public long getNextId() throws DAOException, IOException, ClassNotFoundException {
