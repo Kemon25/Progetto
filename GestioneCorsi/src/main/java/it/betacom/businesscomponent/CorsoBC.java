@@ -67,7 +67,6 @@ public class CorsoBC {
 		
 		avg/=valori.size();
 		return avg;
-	
 	}
 }
 	

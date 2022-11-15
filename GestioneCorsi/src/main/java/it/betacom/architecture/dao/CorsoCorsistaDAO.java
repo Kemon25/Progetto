@@ -45,7 +45,7 @@ public class CorsoCorsistaDAO implements DAOConstants{
 		}
 	}
 	
-	public ArrayList<Corso> getCorsiBYIdCorsista(Connection conn, long id) throws DAOException {
+	public ArrayList<Corso> getCorsiByIdCorsista(Connection conn, long id) throws DAOException {
 		Corso corso = null;
 		ArrayList<Corso> corsi = new ArrayList<Corso>();
 				
@@ -70,7 +70,7 @@ public class CorsoCorsistaDAO implements DAOConstants{
 		return corsi;
 	}
 	
-	public int getNumCorsistaBYIdCorso(Connection conn, long id) throws DAOException {
+	public int getNumCorsistaByIdCorso(Connection conn, long id) throws DAOException {
 		int n = 0;
 		
 		PreparedStatement ps;
