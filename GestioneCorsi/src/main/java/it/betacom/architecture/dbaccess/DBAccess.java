@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import it.betacom.architecture.dao.DAOException;
+
 
 public class DBAccess {
 	private static Connection conn;
