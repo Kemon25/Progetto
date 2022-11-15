@@ -7,6 +7,7 @@ import java.sql.Connection;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import it.betacom.architecture.dao.DAOException;
@@ -29,7 +30,8 @@ class DocenteDAOTest {
 
 
 	@Test
-	void test() {
+	@Order(1)
+	void testGetId() {
 		try {
 			Docente docente = new Docente();
 			docente = DocenteDAO.getFactory().getById(conn, 4);
@@ -41,6 +43,18 @@ class DocenteDAOTest {
 		}
 	}
 
+	@Test
+	@Order(1)
+	void testGetAll() {
+		try {
+			System.out.println(DocenteDAO.getFactory().getAll(conn));
+		} catch (DAOException exc) {
+			System.out.println("Motivo: " + exc.getMessage());
+			exc.printStackTrace();
+		}
+	}
+	
+	
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		DBAccess.closeConnection();

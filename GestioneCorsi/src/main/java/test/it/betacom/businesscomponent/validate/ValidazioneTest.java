@@ -71,6 +71,13 @@ class ValidazioneTest {
 		assertEquals(false, validazione.dateCorso(null, calFine.getTime()));
 
 	}
+	@Test
+	@Order(3)
+	void commenti() {
+		assertEquals(true, null);
+		assertEquals(true, "12345");
+		assertEquals(false, "12345jsdbvjffbajdbiefabsfeagsrdhtafegsrteqrwewqweqwegwteherwehweryt3weygrsefasgrhdtrgeawetyhtewyerwrytwrqtjhyrtewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {

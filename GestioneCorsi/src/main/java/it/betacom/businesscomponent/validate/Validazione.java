@@ -67,7 +67,7 @@ public class Validazione {
 	}
 
 	public boolean commenti(String commento) {
-		if (commento.length() <= 200) {
+		if (commento.length() <= 200 || commento == null) {
 			return true;
 		}
 		return false;
