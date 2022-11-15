@@ -53,7 +53,7 @@ public class CorsoCorsistaBC {
 	
 	public int getNumCorsistaByIdCorso(long idCorso) throws DAOException{
 		
-		return CorsoCorsistaDAO.getFactory().getNumCorsistaBYId(conn, idCorso);
+		return CorsoCorsistaDAO.getFactory().getNumCorsistaBYIdCorso(conn, idCorso);
 	}
 		
 	

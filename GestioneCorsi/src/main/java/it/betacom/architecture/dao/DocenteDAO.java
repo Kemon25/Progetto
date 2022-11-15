@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 import it.betacom.businesscomponent.model.Docente;
 
-public class DocenteDAO implements DAOConstants{
+public class DocenteDAO implements DAOConstants {
 
 	private DocenteDAO() {
 	}
-	
+
 	public static DocenteDAO getFactory() {
 		return new DocenteDAO();
 	}
-	
+
 	public Docente getById(Connection conn, long id) throws DAOException {
 		PreparedStatement ps;
 		Docente docente;
@@ -31,23 +31,21 @@ public class DocenteDAO implements DAOConstants{
 			docente.setNome(rs.getString("nome_docente"));
 			docente.setCognome(rs.getString("cognome_docente"));
 			docente.setCv(rs.getString("cv"));
-			
+
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
 		return docente;
 	}
-	
+
 	public ArrayList<Docente> getAll(Connection conn) throws DAOException {
 		ArrayList<Docente> docenti = new ArrayList<Docente>();
 		try {
-			Statement stmt = conn.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
-			
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
 			ResultSet rs = stmt.executeQuery(SELECT_DOCENTE);
-			
-			while( rs.next()) {
+
+			while (rs.next()) {
 				Docente docente = new Docente();
 				docente.setId(rs.getLong("id_docente"));
 				docente.setNome(rs.getString("nome_docente"));
@@ -55,12 +53,12 @@ public class DocenteDAO implements DAOConstants{
 				docente.setCv(rs.getString("cv"));
 				docenti.add(docente);
 			}
-			
-		} catch(SQLException sql) {
+
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
-		
+
 		return docenti;
 	}
-	
+
 }

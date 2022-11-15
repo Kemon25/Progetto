@@ -10,26 +10,25 @@ import java.util.ArrayList;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
 
-
 import it.betacom.businesscomponent.model.Corso;
 
-public class CorsoDAO implements DAOConstants{
+public class CorsoDAO implements DAOConstants {
+
 	public static CorsoDAO getFactory() throws DAOException {
 		return new CorsoDAO();
 	}
 
 	private CachedRowSet rowSet;
-	
+
 	private CorsoDAO() throws DAOException {
 		try {
 			rowSet = RowSetProvider.newFactory().createCachedRowSet();
-		} catch(SQLException sql) {
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
 	}
 
-		
-	public void create(Connection conn,Corso corso) throws DAOException {
+	public void create(Connection conn, Corso corso) throws DAOException {
 		try {
 			rowSet.setCommand(SELECT_CORSO);
 			rowSet.execute(conn);
@@ -43,36 +42,38 @@ public class CorsoDAO implements DAOConstants{
 			rowSet.updateString(7, corso.getCommenti());
 			rowSet.updateString(8, corso.getAula());
 			
+			
+
 			rowSet.insertRow();
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
-		} catch(SQLException sql) {
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
 	}
-	
+
 	public void delete(Connection conn, long idCorso) throws SQLException {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(DELETE_CORSO);
-			ps.setLong(1,idCorso);
+			ps.setLong(1, idCorso);
 			ps.execute();
 			conn.commit();
-		} catch(SQLException sql) {
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
 	}
-	
+
 	public Corso getById(Connection conn, long idCorso) throws DAOException {
 		Corso corso = null;
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(SELECT_CORSO_ID);
 			ps.setLong(1, idCorso);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				corso = new Corso();
 				corso.setIdCorso(rs.getLong(1));
 				corso.setIdDocente(rs.getLong(2));
@@ -82,25 +83,23 @@ public class CorsoDAO implements DAOConstants{
 				corso.setCosto(rs.getDouble(6));
 				corso.setCommenti(rs.getString(7));
 				corso.setAula(rs.getString(8));
-				
+
 			}
-			
-		} catch(SQLException sql) {
+
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
 		return corso;
 	}
-	
+
 	public ArrayList<Corso> getAll(Connection conn) throws DAOException {
 		ArrayList<Corso> corsi = new ArrayList<Corso>();
 		try {
-			Statement stmt = conn.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_READ_ONLY);
-			
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
 			ResultSet rs = stmt.executeQuery(SELECT_CORSO);
-			
-			while( rs.next()) {
+
+			while (rs.next()) {
 				Corso c = new Corso();
 				c.setIdCorso(rs.getLong(1));
 				c.setIdDocente(rs.getLong(2));
@@ -112,27 +111,26 @@ public class CorsoDAO implements DAOConstants{
 				c.setAula(rs.getString(8));
 				corsi.add(c);
 			}
-			
-		} catch(SQLException sql) {
+
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
-		
+
 		return corsi;
 	}
-	
-	public ArrayList<Corso> getCorsiByIdDocente(Connection conn,long idDocente) throws DAOException {
-		ArrayList<Corso> corsi= new ArrayList<Corso>();
+
+	public ArrayList<Corso> getCorsiByIdDocente(Connection conn, long idDocente) throws DAOException {
+		ArrayList<Corso> corsi = new ArrayList<Corso>();
 		ResultSet rs;
 		PreparedStatement pstmt;
 		try {
-			
+
 			pstmt = conn.prepareStatement(SELECT_CORSO_DOCENTE_ID);
-			pstmt.setLong(1,idDocente);
-			
-			rs=pstmt.executeQuery();
-			
-			
-			while( rs.next()) {
+			pstmt.setLong(1, idDocente);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
 				Corso c = new Corso();
 				c.setIdCorso(rs.getLong(1));
 				c.setIdDocente(rs.getLong(2));
@@ -142,13 +140,13 @@ public class CorsoDAO implements DAOConstants{
 				c.setCosto(rs.getDouble(6));
 				c.setCommenti(rs.getString(7));
 				c.setAula(rs.getString(8));
-				corsi.add(c); 
+				corsi.add(c);
 			}
-			
-		} catch(SQLException sql) {
+
+		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
-		
+
 		return corsi;
 	}
 }

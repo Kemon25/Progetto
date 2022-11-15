@@ -20,7 +20,7 @@ public class Validazione {
 
 	public boolean getStatoCorso(Corso corso) throws DAOException, ClassNotFoundException, IOException {
 		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
-		if (ccBC != null) {
+		if (corso != null) {
 			int capienza = ccBC.getNumCorsistaByIdCorso(corso.getIdCorso());
 			if (capienza < 12) {
 				return true;
