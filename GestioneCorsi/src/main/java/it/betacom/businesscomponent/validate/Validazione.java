@@ -67,8 +67,20 @@ public class Validazione {
 	}
 
 	public boolean commenti(String commento) {
-		if (commento.length() <= 200 || commento == null) {
+		if (commento == null)
 			return true;
+		if (commento.length() <= 200) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean aulaCorso(String aula) {
+		String expression = "^[a-zA-Z0.9]+";
+		if ((aula != null) && (aula.length() == 4)) {
+			if (aula.matches(expression)) {
+				return true;
+			}
 		}
 		return false;
 	}

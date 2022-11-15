@@ -1,4 +1,4 @@
-package it.betacom.businesscomponent.model;
+	package it.betacom.businesscomponent.model;
 
 import java.util.Date;
 

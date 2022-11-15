@@ -74,9 +74,24 @@ class ValidazioneTest {
 	@Test
 	@Order(3)
 	void commenti() {
-		assertEquals(true, null);
-		assertEquals(true, "12345");
-		assertEquals(false, "12345jsdbvjffbajdbiefabsfeagsrdhtafegsrteqrwewqweqwegwteherwehweryt3weygrsefasgrhdtrgeawetyhtewyerwrytwrqtjhyrtewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+		assertEquals(true, validazione.commenti(null));
+		assertEquals(true, validazione.commenti(null));
+		assertEquals(false, validazione.commenti("12345jsdbvjffbajdbiefabsfeagsrdhtafegsrteqrwewqweqwegwteherwehweryt3weygrsefasgrhdtrgeawetyhtewyerwrytwrqtjhyrtewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"));
+	}
+	
+	@Test
+	@Order(4)
+	void aula() {
+		try {
+			assertEquals(true, validazione.aulaCorso("aaaa"));
+			assertEquals(false, validazione.aulaCorso("aaaaa"));
+			assertEquals(false, validazione.aulaCorso("aaa"));
+			assertEquals(false, validazione.aulaCorso("aaa1"));
+			assertEquals(false, validazione.aulaCorso("aaa&"));
+			assertEquals(false, validazione.aulaCorso(null));
+		} catch (Exception exc) {
+			fail("Motivo: " + exc.getMessage());
+		}
 	}
 
 	@AfterAll
