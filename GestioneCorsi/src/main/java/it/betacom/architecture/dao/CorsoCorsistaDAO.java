@@ -1,7 +1,10 @@
 package it.betacom.architecture.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
@@ -14,27 +17,47 @@ public class CorsoCorsistaDAO {
 	private CachedRowSet rowSet;
 	
 	private CorsoCorsistaDAO() throws DAOException{
-		rowSet = RowSetProvider.newFactory().createCachedRowSet();
+		try {
+			rowSet = RowSetProvider.newFactory().createCachedRowSet();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
 	}
 	
 	public void create(Connection conn, CorsoCorsista entity){
 		
-			rowSet.setCommand(SELECT_UTENTE);
+		try {
+			rowSet.setCommand(SELECT_CORSOCORSISTA);
 			rowSet.execute(conn);
 			rowSet.moveToInsertRow();
-			rowSet.updateString(1, entity.getNome());
-			rowSet.updateString(2, entity.getCognome());
-			rowSet.updateString(3, entity.getIndirizzo());
-			rowSet.updateString(4, entity.getCap());
-			rowSet.updateDate(5, new java.sql.Date(entity.getNascita().getTime()));
-			rowSet.updateString(6, entity.getUsername());
-			rowSet.updateString(7,Algoritmo.convertiMD5(entity.getPassword()));
-			rowSet.updateString(8, entity.getEmail());
+			rowSet.updateInt(1, entity.getIdCorsista());
+			rowSet.updateInt(2, entity.getIdCorso());
 			rowSet.insertRow();
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
 		}
+	}
+	
+	public ArrayList<CorsoCorsista> getBYIdCorsista(Connection conn, long id) throws DAOException {
+		CorsoCorsista corsoCorsista = null;
+		ArrayList<CorsoCorsista> corsoCorsisti = null;
+				
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(SELECT_CORSIBYIDCORSISTA);
+			ps.setLong(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				corsoCorsista = new CorsoCorsista();
+				corsoCorsista.setIdCorsista(rs.getInt(1));
+				corsoCorsista.setIdCorso(rs.getInt(2));
+			}
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		
+		return corsoCorsista;
 	}
 }

@@ -31,6 +31,7 @@ public class Admin {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
+	
 	@Override
 	public String toString() {
 		return "Admin [username=" + username + ", password=" + password + ", nome=" + nome + ", cognome=" + cognome
