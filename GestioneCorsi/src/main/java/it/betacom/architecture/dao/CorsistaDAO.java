@@ -48,11 +48,11 @@ public class CorsistaDAO implements DAOConstants {
 
 	}
 
-	public void delete(Connection conn, Corsista entity) throws DAOException {
+	public void delete(Connection conn, long id) throws DAOException {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(DELETE_CORSISTA);
-			ps.setLong(1, entity.getId());
+			ps.setLong(1, id);
 			ps.execute();
 			conn.commit();
 		} catch (SQLException exc) {

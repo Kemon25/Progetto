@@ -74,7 +74,7 @@ class CorsistaDAOTest {
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		try {
-			CorsistaDAO.getFactory().delete(conn, corsista);
+			CorsistaDAO.getFactory().delete(conn, corsista.getId());
 			System.out.println("Corsista eliminato");
 			DBAccess.closeConnection();
 		} catch(DAOException exc) {
