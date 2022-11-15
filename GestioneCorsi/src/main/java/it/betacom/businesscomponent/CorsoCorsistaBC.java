@@ -44,10 +44,10 @@ public class CorsoCorsistaBC {
 	}
 	
 	public ArrayList<Corso> getCorsoMaxfreq() throws DAOException{
-		
+		return null;
 	}
 	
-	public int getNumCorsoByIdCorso(long idCorso) throws DAOException{
+	public int getNumCorsistaByIdCorso(long idCorso) throws DAOException{
 		
 		return CorsoCorsistaDAO.getFactory().getNumCorsistaBYId(conn, idCorso);
 	}
