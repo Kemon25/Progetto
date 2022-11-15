@@ -68,6 +68,7 @@ public class CorsoBC {
 
 		avg /= valori.size();
 		return avg;
+<<<<<<< HEAD
 
 	}
 
@@ -103,5 +104,7 @@ public class CorsoBC {
 		}
 		return corsiDisponibili;
 
+=======
+>>>>>>> branch 'master' of https://github.com/Kemon25/Progetto.git
 	}
 }
