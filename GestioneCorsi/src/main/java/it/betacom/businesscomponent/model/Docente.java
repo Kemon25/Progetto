@@ -2,14 +2,14 @@ package it.betacom.businesscomponent.model;
 
 public class Docente {
 	
-	private int id;
+	private long id;
 	private String nome;
 	private String cognome;
 	private String cv;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getNome() {
