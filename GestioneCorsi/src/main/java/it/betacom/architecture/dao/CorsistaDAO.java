@@ -48,7 +48,7 @@ public class CorsistaDAO implements DAOConstants {
 
 	}
 
-	public void delete(Connection conn, Corsista entity) throws DAOException{
+	public void delete(Connection conn, Corsista entity) throws DAOException {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(DELETE_CORSISTA);
@@ -84,16 +84,15 @@ public class CorsistaDAO implements DAOConstants {
 	}
 
 	public ArrayList<Corsista> getAll(Connection conn) throws DAOException {
-		ArrayList<Corsista> corsisti = null;
+		ArrayList<Corsista> corsisti = new ArrayList<Corsista>();
 
 		try {
-			Statement stmt = conn.createStatement(ResultSet.CONCUR_READ_ONLY, ResultSet.TYPE_SCROLL_INSENSITIVE);
+			Statement stmt = conn.createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
 			ResultSet rs = stmt.executeQuery(SELECT_CORSISTA);
-			rs.last();
-			corsisti = new ArrayList<Corsista>(rs.getRow());
-			rs.beforeFirst();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				Corsista c = new Corsista();
 				c.setId(rs.getLong(1));
 				c.setNome(rs.getString(2));
