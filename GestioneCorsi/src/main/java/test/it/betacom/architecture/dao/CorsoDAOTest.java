@@ -1,9 +1,12 @@
 package test.it.betacom.architecture.dao;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -39,6 +42,7 @@ class CorsoDAOTest {
 			corso.setAula("c1A4");
 		
 	}
+	
 	@Test
 	@Order(1)
 	void testCreate() {
@@ -51,10 +55,57 @@ class CorsoDAOTest {
 		}
 	}
 	
+	@Test
+	@Order(2)
+	void testGetByID() {
+		try {
+			Corso corso=CorsoDAO.getFactory().getById(conn, 1);
+			System.out.println(corso.toString());
+		} catch(DAOException exc) {
+			exc.printStackTrace();
+			fail("Motivo: "+exc.getMessage());
+		}
+	}
+	
+	@Test
+	@Order(3)
+	void testGetAll() {
+		try {
+			ArrayList<Corso> corsi=CorsoDAO.getFactory().getAll(conn);
+			assertNotNull(corsi);
+		} catch(DAOException exc) {
+			exc.printStackTrace();
+			fail("Motivo: "+exc.getMessage());
+		}
+	}
+	
+	@Test
+	@Order(4)
+	void testGetCorsiByIdDocente() {
+		try {
+			ArrayList<Corso> corsi=CorsoDAO.getFactory().getCorsiByIdDocente(conn, 1);
+			assertNotNull(corsi);
+		} catch(DAOException exc) {
+			exc.printStackTrace();
+			fail("Motivo: "+exc.getMessage());
+		}
+	}
+	
 	
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		DBAccess.closeConnection();
+		try {
+			CorsoDAO.getFactory().delete(conn, 1);
+			System.out.println("Corso eliminato");
+			
+		} catch(DAOException exc) {
+			exc.printStackTrace();
+			fail("Motivo: "+exc.getMessage());
+		}
+		finally {
+			DBAccess.closeConnection();
+		}
+		
 	}
 
 }

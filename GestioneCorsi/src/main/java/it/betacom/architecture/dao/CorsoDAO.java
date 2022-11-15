@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
@@ -90,19 +91,16 @@ public class CorsoDAO implements DAOConstants{
 		return corso;
 	}
 	
-	public Corso[] getAll(Connection conn) throws DAOException {
-		Corso[] corsi = null;
+	public ArrayList<Corso> getAll(Connection conn) throws DAOException {
+		ArrayList<Corso> corsi = new ArrayList<Corso>();
 		try {
 			Statement stmt = conn.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			
 			ResultSet rs = stmt.executeQuery(SELECT_CORSO);
-			rs.last();
-			corsi = new Corso[rs.getRow()];
-			rs.beforeFirst();
 			
-			for(int i = 0; rs.next(); i++) {
+			while( rs.next()) {
 				Corso c = new Corso();
 				c.setIdCorso(rs.getLong(1));
 				c.setIdDocente(rs.getLong(2));
@@ -112,7 +110,7 @@ public class CorsoDAO implements DAOConstants{
 				c.setCosto(rs.getDouble(6));
 				c.setCommenti(rs.getString(7));
 				c.setAula(rs.getString(8));
-				corsi[i] = c;
+				corsi.add(c);
 			}
 			
 		} catch(SQLException sql) {
@@ -122,8 +120,8 @@ public class CorsoDAO implements DAOConstants{
 		return corsi;
 	}
 	
-	public Corso[] getCorsiByIdDocente(Connection conn,long idDocente) throws DAOException {
-		Corso[] corsi = null;
+	public ArrayList<Corso> getCorsiByIdDocente(Connection conn,long idDocente) throws DAOException {
+		ArrayList<Corso> corsi= new ArrayList<Corso>();
 		ResultSet rs;
 		PreparedStatement pstmt;
 		try {
@@ -133,11 +131,8 @@ public class CorsoDAO implements DAOConstants{
 			
 			rs=pstmt.executeQuery();
 			
-			rs.last();
-			corsi = new Corso[rs.getRow()];
-			rs.beforeFirst();
 			
-			for(int i = 0; rs.next(); i++) {
+			while( rs.next()) {
 				Corso c = new Corso();
 				c.setIdCorso(rs.getLong(1));
 				c.setIdDocente(rs.getLong(2));
@@ -147,7 +142,7 @@ public class CorsoDAO implements DAOConstants{
 				c.setCosto(rs.getDouble(6));
 				c.setCommenti(rs.getString(7));
 				c.setAula(rs.getString(8));
-				corsi[i] = c;
+				corsi.add(c); 
 			}
 			
 		} catch(SQLException sql) {
@@ -156,7 +151,4 @@ public class CorsoDAO implements DAOConstants{
 		
 		return corsi;
 	}
-	
-	
-
 }
