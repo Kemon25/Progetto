@@ -5,7 +5,7 @@ public interface DAOConstants {
 	//------Admin
 	String SELECT_ADMIN_ID = "select * from admin where username = ?";
 	//------Docente
-	String SELECT_DOCENTE_ID = "select * from utente where id_docente = ?";
+	String SELECT_DOCENTE_ID = "select * from docente where id_docente = ?";
 	
 	//------Corso
 	String SELECT_CORSO = "select * from corso";

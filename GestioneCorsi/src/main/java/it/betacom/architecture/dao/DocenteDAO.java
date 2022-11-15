@@ -18,12 +18,13 @@ public class DocenteDAO implements DAOConstants{
 	
 	public Docente getById(Connection conn, long id) throws DAOException {
 		PreparedStatement ps;
-		Docente docente = null;
+		Docente docente;
 		try {
+			docente = new Docente();
 			ps = conn.prepareStatement(SELECT_DOCENTE_ID);
 			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
-			docente = new Docente();
+			rs.next();
 			docente.setId(id);
 			docente.setNome(rs.getString("nome_docente"));
 			docente.setCognome(rs.getString("cognome_docente"));
