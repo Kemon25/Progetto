@@ -11,12 +11,12 @@ import it.betacom.businesscomponent.model.Admin;
 import it.betacom.businesscomponent.security.Algoritmo;
 
 public class AdminBC {
+	
 	private Connection conn;
+	
 	public AdminBC() throws  ClassNotFoundException, IOException, DAOException{
 		conn=DBAccess.getConnection();
 	}
-	
-	
 	
 	public boolean accesso(String username, String password) throws DAOException {
 		
@@ -36,6 +36,7 @@ public class AdminBC {
 			
 		}
 	}
+	
 	public Admin getAdmin(String username) throws DAOException {
 		
 		Admin a = null;
@@ -52,9 +53,4 @@ public class AdminBC {
 		}
 		return a;
 	}
-	
-	
-	
-	
-	
 }
