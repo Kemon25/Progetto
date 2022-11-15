@@ -1,18 +1,14 @@
 package test.it.betacom.businesscomponent;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import it.betacom.architecture.dao.DAOException;
 import it.betacom.architecture.dbaccess.DBAccess;
@@ -24,7 +20,7 @@ class CorsoBCTest {
 	private static CorsoBC corso;
 
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() {
 		corso = new CorsoBC();
 		Corso corso1 = new Corso();
 		Corso corso2 = new Corso();
@@ -64,83 +60,60 @@ class CorsoBCTest {
 
 	@Test
 	@Order(1)
-	void getUltimoCorsotest() throws ClassNotFoundException, DAOException, SQLException, IOException {
-		try {
-			corso = new CorsoBC();
-			Date data = corso.getUltimoCorso();
-			System.out.println(data);
-		} catch (DAOException exc) {
-			exc.printStackTrace();
-			fail("Motivo: " + exc.getMessage());
-		}
+	void getUltimoCorsotest() {
+
+		corso = new CorsoBC();
+		Date data = corso.getUltimoCorso();
+		System.out.println(data);
 
 	}
 
 	@Test
 	@Order(2)
-	void getMedia() throws ClassNotFoundException, IOException {
-		try {
-			corso = new CorsoBC();
-			int media = corso.getMediaCorsi();
-			System.out.println("La durata media dei corsi è di " + media + " giorni");
+	void getMedia() throws DAOException {
 
-		} catch (DAOException exc) {
-			exc.printStackTrace();
-			fail("Motivo: " + exc.getMessage());
-		}
+		corso = new CorsoBC();
+		int media = corso.getMediaCorsi();
+		System.out.println("La durata media dei corsi è di " + media + " giorni");
+
 	}
 
 	@Test
 	@Order(3)
-	void getNumCommenti() throws ClassNotFoundException, IOException {
-		try {
-			corso = new CorsoBC();
-			System.out.println(corso.getNumCommenti());
-		} catch (DAOException exc) {
-			exc.printStackTrace();
-			fail("Motivo: " + exc.getMessage());
-		}
+	void getNumCommenti() {
+
+		corso = new CorsoBC();
+		System.out.println(corso.getNumCommenti());
+
 	}
 
 	@Test
 	@Order(4)
-	void getDocentiMultiCorso() throws ClassNotFoundException, IOException {
-		try {
-			corso = new CorsoBC();
-			System.out.println(corso.getDocentiMultiCorso());
-		} catch (DAOException exc) {
-			exc.printStackTrace();
-			fail("Motivo: " + exc.getMessage());
-		}
+	void getDocentiMultiCorso() {
+
+		corso = new CorsoBC();
+		System.out.println(corso.getDocentiMultiCorso());
+
 	}
 
 	@Test
 	@Order(5)
-	void getCorsiDisponibili() throws ClassNotFoundException, IOException {
-		try {
-			corso = new CorsoBC();
-			System.out.println(corso.getCorsiDisponibili());
-		} catch (DAOException exc) {
-			exc.printStackTrace();
-			fail("Motivo: " + exc.getMessage());
-		}
+	void getCorsiDisponibili() {
+
+		corso = new CorsoBC();
+		System.out.println(corso.getCorsiDisponibili());
+
 	}
 
 	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-		try {
-			corso = new CorsoBC();
-			corso.delete(1);
-			corso.delete(2);
-			corso.delete(3);
-			System.out.println("Corsi eliminati");
+	static void tearDownAfterClass() throws DAOException {
 
-		} catch (DAOException exc) {
-			exc.printStackTrace();
-			fail("Motivo: " + exc.getMessage());
-		} finally {
-			DBAccess.closeConnection();
-		}
+		corso = new CorsoBC();
+		corso.delete(1);
+		corso.delete(2);
+		corso.delete(3);
+		System.out.println("Corsi eliminati");
+		DBAccess.closeConnection();
 
 	}
 

@@ -52,7 +52,7 @@ public class CorsoDAO implements DAOConstants {
 		}
 	}
 
-	public void delete(Connection conn, long idCorso) throws SQLException {
+	public void delete(Connection conn, long idCorso) throws DAOException {
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(DELETE_CORSO);

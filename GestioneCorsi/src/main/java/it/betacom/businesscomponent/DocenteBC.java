@@ -12,11 +12,24 @@ public class DocenteBC {
 	
 	private Connection conn;
 	
-	public DocenteBC() throws ClassNotFoundException, DAOException, IOException {
-		conn = DBAccess.getConnection();
+	public DocenteBC() {
+			try {
+				conn = DBAccess.getConnection();
+			} catch (ClassNotFoundException | DAOException | IOException exc) {
+					exc.printStackTrace();
+					System.err.println(exc.getMessage());
+				}	
 	}
 
-	public Docente getById(long id) throws DAOException {
-		return DocenteDAO.getFactory().getById(conn, id);
+	public Docente getById(long id){
+		Docente docente = new Docente();
+		try {
+			docente = DocenteDAO.getFactory().getById(conn, id);
+		}catch (DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}
+		return docente;
+		
 	}
 }

@@ -2,7 +2,6 @@ package it.betacom.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -19,35 +18,65 @@ public class CorsoBC {
 
 	private Connection conn;
 
-	public CorsoBC() throws ClassNotFoundException, DAOException, IOException {
-		conn = DBAccess.getConnection();
+	public CorsoBC() {
+		try {
+			conn = DBAccess.getConnection();
+		} catch (ClassNotFoundException | DAOException | IOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}
 	}
 
-	public void create(Corso corso) throws DAOException {
-		CorsoDAO.getFactory().create(conn, corso);
+	public boolean create(Corso corso) {
+		Validazione validazione = Validazione.getFactory();
+		DocenteBC dBC = new DocenteBC();
+		try {
+			if (validazione.nomeCorso(corso.getNomeCorso())
+					&& validazione.dateCorso(corso.getDataInizio(), corso.getDataFine())
+					&& validazione.commenti(corso.getCommenti()) && validazione.aulaCorso(corso.getAula()))
+				if (dBC.getById(corso.getIdDocente()) != null) {
+					CorsoDAO.getFactory().create(conn, corso);
+					return true;
+				}
+					
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}return false;
 	}
 
-	public void delete(long idCorso) throws SQLException {
-		CorsoDAO.getFactory().delete(conn, idCorso);
+	public void delete(long idCorso) {
+		try {
+			CorsoDAO.getFactory().delete(conn, idCorso);
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}
 	}
 
-	public Date getUltimoCorso() throws SQLException {
+	public Date getUltimoCorso() {
 		Date DataMagg = null;
-		ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
-		for (int i = 0; i < corsi.size(); i++) {
-			if (i == 0) {
-				DataMagg = corsi.get(i).getDataInizio();
-			} else {
-				if (corsi.get(i).getDataInizio().compareTo(DataMagg) > 0) {
+		ArrayList<Corso> corsi;
+		try {
+			corsi = CorsoDAO.getFactory().getAll(conn);
+
+			for (int i = 0; i < corsi.size(); i++) {
+				if (i == 0) {
 					DataMagg = corsi.get(i).getDataInizio();
+				} else {
+					if (corsi.get(i).getDataInizio().compareTo(DataMagg) > 0) {
+						DataMagg = corsi.get(i).getDataInizio();
+					}
 				}
 			}
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
 		}
 		return DataMagg;
 	}
 
 	public int getMediaCorsi() throws DAOException {
-
 		Corso corso;
 		int avg = 0;
 		ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
@@ -71,37 +100,51 @@ public class CorsoBC {
 
 	}
 
-	public int getNumCommenti() throws DAOException {
-		ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
+	public int getNumCommenti() {
 		int i = 0;
-		for (Corso c : corsi) {
-			if (c.getCommenti() != null) {
-				i++;
+		try {
+			ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
+			for (Corso c : corsi) {
+				if (c.getCommenti() != null) {
+					i++;
+				}
 			}
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
 		}
 		return i;
 	}
 
-	public ArrayList<Docente> getDocentiMultiCorso() throws DAOException {
+	public ArrayList<Docente> getDocentiMultiCorso() {
 		ArrayList<Docente> multidocente = new ArrayList<Docente>();
-		ArrayList<Docente> docenti = DocenteDAO.getFactory().getAll(conn);
-		for (Docente d : docenti) {
-			ArrayList<Corso> corsi = CorsoDAO.getFactory().getCorsiByIdDocente(conn, d.getId());
-			if (corsi.size() > 1)
-				multidocente.add(d);
+		try {
+			ArrayList<Docente> docenti = DocenteDAO.getFactory().getAll(conn);
+			for (Docente d : docenti) {
+				ArrayList<Corso> corsi = CorsoDAO.getFactory().getCorsiByIdDocente(conn, d.getId());
+				if (corsi.size() > 1)
+					multidocente.add(d);
+			}
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
 		}
 		return multidocente;
 	}
 
-	public ArrayList<Corso> getCorsiDisponibili() throws DAOException, ClassNotFoundException, IOException {
+	public ArrayList<Corso> getCorsiDisponibili() {
 		ArrayList<Corso> corsiDisponibili = new ArrayList<Corso>();
-		ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
-		for (Corso c : corsi) {
-			if (c.getDataInizio().getTime() > new Date().getTime() && Validazione.getFactory().getStatoCorso(c)) {
-				corsiDisponibili.add(c);
+		try {
+			ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
+			for (Corso c : corsi) {
+				if (c.getDataInizio().getTime() > new Date().getTime() && Validazione.getFactory().getStatoCorso(c)) {
+					corsiDisponibili.add(c);
+				}
 			}
+		} catch (DAOException | ClassNotFoundException | IOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
 		}
 		return corsiDisponibili;
-
 	}
 }
