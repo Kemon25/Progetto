@@ -1,3 +1,7 @@
+<%@page import="java.util.Locale"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
 <%@page import="it.betacom.businesscomponent.DocenteBC"%>
 <%@page import="it.betacom.businesscomponent.CorsoBC"%>
 <%@page import="it.betacom.businesscomponent.model.Corso"%>
@@ -5,28 +9,32 @@
 <%@page import="java.util.Arrays"%>
 
 <%
+/*
 	if(session.getAttribute("username") == null) {
 		response.sendRedirect("index.jsp");
 	} else {
+	*/	
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%
-	String query = request.getParameter("q");
-	CorsoBC corso=new CorsoBC();
-	List<Corso> corsi = corso.getCorsiDisponibili();
-	DocenteBC d=new DocenteBC();
-	%>
+	DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ITALY);
 
+	List<Corso> corsi = AdminFacade.getInstance().getCorsiDisponibili();
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
+	<%@ include file="CDN.html" %>
 <meta charset="ISO-8859-1">
 <title>Elimina corsi </title>
+	<link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
-
+<jsp:include page="nav.jsp"/>
 <div class="container">
 	<header class="page-header">
 		<h3>Corsi disponibili</h3>
@@ -35,6 +43,7 @@
 	
 	<div class="table-responsive">
 		<table class="table table-hover">
+		
 			<thead>
 				<tr>
 					<th>Nome Corso</th>
@@ -48,19 +57,20 @@
 					<th></th>
 				</tr>
 			</thead>
+			
 			<tbody>
 				<%
 					for(Corso c : corsi) {
 				%>
 				<tr>				
 					<td><%= c.getNomeCorso()%></td>
-					<td><%= d.getById(c.getIdDocente()).getCognome()%></td>
-					<td><%= c.getDataInizio()%></td>
-					<td><%= c.getDataFine()%></td>
-					<td><%= c.getCosto()%></td>				
-					<td><%= c.getAula()%></td>		
+					<td><%= AdminFacade.getInstance().getById(c.getIdDocente()).getCognome() %></td>
+					
+					<td><%= df.format(c.getDataInizio()) %></td>
+					<td><%= df.format(c.getDataFine()) %></td>
+					
 					<td><%= String.format("%.2f", c.getCosto()) %> &euro;</td>
-					<td>
+					<td><%= c.getAula()%></td>
 					<td>
 						<form action="/<%= application.getServletContextName() %>/rimuoviCorso?id=<%= c.getIdCorso() %>" method="post">
 							<button class="btn btn-danger btn-xs" type="submit">
@@ -68,6 +78,7 @@
 							</button>
 						</form>
 					</td>
+					
 				</tr>
 				<%
 					}
@@ -79,5 +90,7 @@
 </body>
 </html>
 <%
+/*
 	}
+*/
 %>

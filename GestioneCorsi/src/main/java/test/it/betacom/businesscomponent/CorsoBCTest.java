@@ -39,8 +39,8 @@ class CorsoBCTest {
 		corso2.setIdCorso(2);
 		corso2.setIdDocente(1);
 		corso2.setNomeCorso("GPO");
-		corso2.setDataInizio(new GregorianCalendar(2022, 10, 1).getTime());
-		corso2.setDataFine(new GregorianCalendar(2022, 10, 25).getTime());
+		corso2.setDataInizio(new GregorianCalendar(2022, 11, 17).getTime());
+		corso2.setDataFine(new GregorianCalendar(2050, 10, 25).getTime());
 		corso2.setCosto(1000);
 		corso2.setCommenti("Gestione D'impresa");
 		corso2.setAula("B2B5");
@@ -49,7 +49,7 @@ class CorsoBCTest {
 		corso3.setIdCorso(3);
 		corso3.setIdDocente(1);
 		corso3.setNomeCorso("java");
-		corso3.setDataInizio(new GregorianCalendar(2022, 9, 26).getTime());
+		corso3.setDataInizio(new GregorianCalendar(2022, 11, 26).getTime());
 		corso3.setDataFine(new GregorianCalendar(2023, 1, 13).getTime());
 		corso3.setCosto(1000);
 		corso3.setCommenti("java EE");
