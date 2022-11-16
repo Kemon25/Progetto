@@ -39,7 +39,7 @@ class CorsoBCTest {
 		corso2.setIdCorso(2);
 		corso2.setIdDocente(1);
 		corso2.setNomeCorso("GPO");
-		corso2.setDataInizio(new GregorianCalendar(2022, 11, 1).getTime());
+		corso2.setDataInizio(new GregorianCalendar(2022, 10, 1).getTime());
 		corso2.setDataFine(new GregorianCalendar(2022, 10, 25).getTime());
 		corso2.setCosto(1000);
 		corso2.setCommenti("Gestione D'impresa");

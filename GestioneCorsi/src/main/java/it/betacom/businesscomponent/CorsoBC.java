@@ -3,8 +3,9 @@ package it.betacom.businesscomponent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.util.GregorianCalendar;
 
 import it.betacom.architecture.dao.CorsoDAO;
 import it.betacom.architecture.dao.DAOException;
@@ -37,8 +38,8 @@ public class CorsoBC {
 				if (dBC.getById(corso.getIdDocente()) != null) {
 					CorsoDAO.getFactory().create(conn, corso);
 					return true;
-				}
-					
+				}		
+		
 		} catch (DAOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
@@ -76,28 +77,30 @@ public class CorsoBC {
 		return DataMagg;
 	}
 
-	public int getMediaCorsi() throws DAOException {
-		Corso corso;
-		int avg = 0;
-		ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
-		ArrayList<Integer> valori = new ArrayList<Integer>();
+	public int getMediaCorsi() {
+		GregorianCalendar calInizio = new GregorianCalendar();
+		GregorianCalendar calFine = new GregorianCalendar();
+		ArrayList<Corso> corsi=null;
+		int totale=0;
+		try {		
+		corsi = CorsoDAO.getFactory().getAll(conn);
+		for(Corso c :corsi) {
+		calInizio.setTime(c.getDataInizio());
+		calFine.setTime(c.getDataFine());
 
-		for (int i = 0; i < corsi.size(); i++) {
-			long data1 = corsi.get(i).getDataInizio().getTime();
-			long data2 = corsi.get(i).getDataFine().getTime();
-
-			long durataCorso = Math.abs(data1 - data2);
-			int giorni = (int) TimeUnit.DAYS.convert(durataCorso, TimeUnit.MILLISECONDS);
-			valori.add(giorni + 1);
+		int anno = (calFine.get(Calendar.YEAR) - calInizio.get(Calendar.YEAR))*365;
+		int giorni = calFine.get(Calendar.DAY_OF_YEAR) - calInizio.get(Calendar.DAY_OF_YEAR);
+		totale+=anno+giorni;
+	
+		}	
+		
+		
+		
+		}catch(DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());	
 		}
-
-		for (int i = 0; i < valori.size(); i++) {
-			avg += valori.get(i);
-		}
-
-		avg /= valori.size();
-		return avg;
-
+		return totale/corsi.size();
 	}
 
 	public int getNumCommenti() {
