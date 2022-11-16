@@ -30,25 +30,13 @@ public class CorsistaBC {
 			corsista.setId(CorsistaIdGenerator.getInstance().getNextId());
 		
 			if((Validazione.getFactory().nomeCorsista(corsista.getNome())) &&
-					(Validazione.getFactory().cognomeCorsista(corsista.getCognome()))) {
+					(Validazione.getFactory().cognomeCorsista(corsista.getCognome())))
 					//&& (Validazione.getFactory().precedentiFormativi(corsista.getPrecedentiFormativi())))
 				valido = true;
-				System.out.println("Nome e cognome nel formato corretto");
-			} else {
-				System.out.println("Nome o cognome non nel formato corretto");
-			}
-			
-			if(valido) {
-				CorsistaDAO.getFactory().create(conn, corsista);
-				System.out.println("Corsista creato!");
-			} else {
-				System.out.println("Corsista non creato!");
-			}
 		} catch(ClassNotFoundException | DAOException | IOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
 		}
-		
 		return valido;
 	}
 	
