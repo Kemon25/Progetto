@@ -14,8 +14,17 @@ public class AdminBC {
 
 	private Connection conn;
 
-	public AdminBC() throws ClassNotFoundException, IOException, DAOException {
-		conn = DBAccess.getConnection();
+	public AdminBC()  {
+		
+		try {
+			conn = DBAccess.getConnection();
+			
+		}catch (DAOException|ClassNotFoundException| IOException exc) {
+
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}
+		
 	}
 
 	public boolean accesso(String username, String password) {
