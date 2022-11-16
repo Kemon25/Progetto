@@ -1,3 +1,4 @@
+<%@page import="it.betacom.businesscomponent.model.Corsista"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="it.betacom.businesscomponent.model.Corso"%>
@@ -40,12 +41,57 @@ else {
 		<%}%>
 		</div>
 		
-		<%DateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); %>
+		<%DateFormat formato = new SimpleDateFormat("dd-MMM-yyyy"); %>
 		<div>
 		<p>
 			Da inizio dell'ultimo corso: <strong> <%=formato.format(AdminFacade.getInstance().getUltimoCorso())%>
 			</strong>
 		</p>
+		</div>
+		
+		<div>
+		<p>
+			Durata media dei corsi: <strong> <%=AdminFacade.getInstance().getMediaCorsi()%>
+			</strong>&nbsp;giorni
+		</p>
+		</div>
+		
+		<div>
+		<p>
+			Fra i vari corsi ci sono: <strong> <%=AdminFacade.getInstance().getNumCommenti()%>
+			</strong>&nbsp;commenti
+		</p>
+		</div>
+		
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th>Precedenti Formativi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (Corsista c:AdminFacade.getInstance().getAllCorsista()) {
+						String precedenti = new String();
+						if(c.getPrecedentiFormativi()==0)
+							precedenti = "No";
+						else
+							precedenti = "Si";
+					%>
+					<tr>
+						<td><a href="corsista.jsp?idCorsista=<%=c.getId()%>"><%=c.getNome()%></a></td>
+						<td><%=c.getCognome()%></td>
+						<td><%=precedenti%></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+
+			</table>
 		</div>
 		
 		</div>
