@@ -33,20 +33,25 @@ class CorsoCorsistaDAOTest {
 	static void setUpBeforeClass() throws Exception {
 		conn = DBAccess.getConnection();
 		corso = new Corso();
-		corso.setIdCorso(2);
-		corso.setIdDocente(1);
+		corso.setIdCorso(105);
+		corso.setIdDocente(3);
 		corso.setNomeCorso("Fisica");
-		corso.setDataInizio(new GregorianCalendar().getTime());
-		corso.setDataFine(new GregorianCalendar(2022, 11, 4).getTime());
+		corso.setDataInizio(new GregorianCalendar(01,01,2020).getTime());
+		corso.setDataFine(new GregorianCalendar(21, 01, 2020).getTime());
 		corso.setCosto(1200.13);
-		corso.setCommenti("ciao");
-		corso.setAula("A1");
+		corso.setCommenti("commento");
+		corso.setAula("C1A4");
+		
+		corsista = new Corsista();
+		corsista.setId(107);
+		corsista.setNome("Marco");
+		corsista.setCognome("Rossi");
+		corsista.setPrecedentiFormativi(0);
 		
 		
 		corsoCorsista = new CorsoCorsista();
-		corsoCorsista.setIdCorsista(1);
-		corsoCorsista.setIdCorso(1);
-		
+		corsoCorsista.setIdCorso(105);
+		corsoCorsista.setIdCorsista(107);
 	}
 	
 	@Test
@@ -54,42 +59,42 @@ class CorsoCorsistaDAOTest {
 	void testCreate() {
 		try {
 			CorsoDAO.getFactory().create(conn, corso);
+			CorsistaDAO.getFactory().create(conn, corsista);
 			CorsoCorsistaDAO.getFactory().create(conn, corsoCorsista);
-			
+			System.out.println(corsoCorsista.toString());
 		} catch (DAOException e) {
 			e.printStackTrace();		
 			fail("Motivo: "+ e.getMessage());
-			
-		}	
+		}		
 	}
 	
 	@Test
 	@Order(2)
 	void testGet() {
-		ArrayList<Corso> l = new ArrayList<Corso>();
-		int num;
+		ArrayList<Corso> corsi = new ArrayList<Corso>();
+		int num = 0;
 		try {
-			l = CorsoCorsistaDAO.getFactory().getCorsiByIdCorsista(conn, 1);
-			num = CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, 1);
-			
+			corsi = CorsoCorsistaDAO.getFactory().getCorsiByIdCorsista(conn, 107);
+			System.out.println();
+			for (Corso corso : corsi) {
+				System.out.println(corso.toString());
+			}
+			num = CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, 105);
+			System.out.println("Num corsisti: " + num);
 		} catch (DAOException e) {
 			e.printStackTrace();		
 			fail("Motivo: "+ e.getMessage());
-			
-		}	
-		
+		}		
 	}
 	
 	
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		
 		try {
+			CorsoDAO.getFactory().delete(conn, 105);
+			CorsistaDAO.getFactory().delete(conn, 107);
 			DBAccess.closeConnection();
-			CorsoDAO.getFactory().delete(conn, 2);
-			CorsistaDAO.getFactory().delete(conn, 1);
-		
-			
+			System.out.println("Delete done!");
 		}	catch (DAOException e) {
 			e.printStackTrace();
 			fail("Motivo: " + e.getMessage());
