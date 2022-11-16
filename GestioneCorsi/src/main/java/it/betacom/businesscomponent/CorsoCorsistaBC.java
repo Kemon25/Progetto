@@ -16,54 +16,89 @@ import it.betacom.businesscomponent.validate.Validazione;
 public class CorsoCorsistaBC {
 	private Connection conn;
 
-	public CorsoCorsistaBC() throws ClassNotFoundException, DAOException, IOException {
-		conn = DBAccess.getConnection();
+	public CorsoCorsistaBC() {
+		try {
+			conn = DBAccess.getConnection();
+		} catch (ClassNotFoundException | DAOException | IOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}
 	}
 
-	public void create(CorsoCorsista corsoCorsista) throws ClassNotFoundException, IOException, DAOException {
-		CorsoCorsistaDAO.getFactory().create(conn, corsoCorsista);
+	public void create(CorsoCorsista corsoCorsista) {
+		try {
+			CorsoCorsistaDAO.getFactory().create(conn, corsoCorsista);
+		} catch (DAOException e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
 	}
 
-	public ArrayList<Corso> getCorsiByIdCorsista(long idCorsista) throws DAOException {
-		return CorsoCorsistaDAO.getFactory().getCorsiByIdCorsista(conn, idCorsista);
+	public ArrayList<Corso> getCorsiByIdCorsista(long idCorsista) {
+		ArrayList<Corso> c = null;
+		try {
+			c = CorsoCorsistaDAO.getFactory().getCorsiByIdCorsista(conn, idCorsista);
+		} catch (DAOException e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return c;
 	}
 
-	public int getNumCorsistaByIdCorso(long idCorso) throws DAOException {
-		return CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, idCorso);
+	public int getNumCorsistaByIdCorso(long idCorso) {
+		int num = -1;
+		try {
+			num = CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, idCorso);
+		} catch (DAOException e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return num;
 	}
 
 	public ArrayList<Corso> getCorsoMaxfreq() throws DAOException {
 		int maxFreq = 0;
 		ArrayList<Corso> corsi = new ArrayList<Corso>();
 		ArrayList<Corso> corsiMaxFreq = new ArrayList<Corso>();
-		corsi = CorsoDAO.getFactory().getAll(conn);
-		ArrayList<Integer> frequenze = new ArrayList<Integer>(corsi.size());
+		try {
+			corsi = CorsoDAO.getFactory().getAll(conn);
+			ArrayList<Integer> frequenze = new ArrayList<Integer>(corsi.size());
 
-		for (Corso corso : corsi) {
-			frequenze.add(CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, corso.getIdCorso()));
-		}
-		maxFreq = Collections.max(frequenze);
-
-		int maxFreqSwap = 0;
-		for (Corso corso : corsi) {
-			maxFreqSwap = CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, corso.getIdCorso());
-			if (maxFreqSwap == maxFreq) {
-				corsiMaxFreq.add(CorsoDAO.getFactory().getById(conn, corso.getIdCorso()));
+			for (Corso corso : corsi) {
+				frequenze.add(CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, corso.getIdCorso()));
 			}
-		}
+			maxFreq = Collections.max(frequenze);
 
+			int maxFreqSwap = 0;
+			for (Corso corso : corsi) {
+				maxFreqSwap = CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, corso.getIdCorso());
+				if (maxFreqSwap == maxFreq) {
+					corsiMaxFreq.add(CorsoDAO.getFactory().getById(conn, corso.getIdCorso()));
+				}
+			}
+
+		} catch (DAOException e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
 		return corsiMaxFreq;
 	}
 
-	public ArrayList<Corso> getCorsiIscrivibili() throws ClassNotFoundException, IOException, DAOException {
+	public ArrayList<Corso> getCorsiIscrivibili() {
 		ArrayList<Corso> l = new ArrayList<Corso>();
 
-		ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
-		for (Corso c : corsi) {
-			if (Validazione.getFactory().getStatoCorso(c))
-				l.add(c);
-		}
+		try {
 
+			ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
+			for (Corso c : corsi) {
+				if (Validazione.getFactory().getStatoCorso(c))
+					l.add(c);
+			}
+
+		} catch (ClassNotFoundException | DAOException | IOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}
 		return l;
 	}
 }
