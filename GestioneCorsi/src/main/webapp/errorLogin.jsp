@@ -5,7 +5,6 @@
 <%@ include file="CDN.html" %>
 <meta charset="ISO-8859-1">
 <title>Errore Login</title>
-<meta http-equiv="refresh" content="1; url=index.jsp" >
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
