@@ -1,3 +1,4 @@
+<%@page import="it.betacom.businesscomponent.model.Docente"%>
 <%@page import="it.betacom.businesscomponent.model.Corsista"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -25,46 +26,57 @@ else {
 		<header class="page-header">
 			<h3>Statistiche dei Corsi</h3>
 		</header>
+
+
 		<div>
-		<p>
-			Numero corsisti totali: <strong> <%=AdminFacade.getInstance().getAllCorsista().size()%>
-			</strong>
-		</p>
+			<p>
+				Numero corsisti totali: <strong> <%=AdminFacade.getInstance().getAllCorsista().size()%>
+				</strong>
+			</p>
 		</div>
-		
+
+
+		<%
+		for (Corso c : AdminFacade.getInstance().getCorsoMaxFreq()) {
+		%>
 		<div>
-		<% for(Corso c:AdminFacade.getInstance().getCorsoMaxFreq()){%>
-		<p>
-			Il corso pi&ugrave; frequentato &egrave;: <strong> <%=c.getNomeCorso()%>
-			</strong>
-		</p>
-		<%}%>
+
+			<p>
+				Il corso pi&ugrave; frequentato &egrave;: <strong> <%=c.getNomeCorso()%>
+				</strong>
+			</p>
+
 		</div>
-		
-		<%DateFormat formato = new SimpleDateFormat("dd-MMM-yyyy"); %>
+		<%
+		}
+		%>
+
+		<%
+		DateFormat formato = new SimpleDateFormat("dd-MMM-yyyy");
+		%>
 		<div>
-		<p>
-			Da inizio dell'ultimo corso: <strong> <%=formato.format(AdminFacade.getInstance().getUltimoCorso())%>
-			</strong>
-		</p>
+			<p>
+				Da inizio dell'ultimo corso: <strong> <%=formato.format(AdminFacade.getInstance().getUltimoCorso())%>
+				</strong>
+			</p>
 		</div>
-		
+
 		<div>
-		<p>
-			Durata media dei corsi: <strong> <%=AdminFacade.getInstance().getMediaCorsi()%>
-			</strong>&nbsp;giorni
-		</p>
+			<p>
+				Durata media dei corsi: <strong> <%=AdminFacade.getInstance().getMediaCorsi()%>
+				</strong>&nbsp;giorni
+			</p>
 		</div>
-		
+
 		<div>
-		<p>
-			Fra i vari corsi ci sono: <strong> <%=AdminFacade.getInstance().getNumCommenti()%>
-			</strong>&nbsp;commenti
-		</p>
+			<p>
+				Fra i vari corsi ci sono: <strong> <%=AdminFacade.getInstance().getNumCommenti()%>
+				</strong>&nbsp;commenti
+			</p>
 		</div>
-		
+
 		<div class="table-responsive">
-		<h3>Elenco Corsisti</h3>
+			<h3>Elenco Corsisti</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -75,9 +87,9 @@ else {
 				</thead>
 				<tbody>
 					<%
-					for (Corsista c:AdminFacade.getInstance().getAllCorsista()) {
+					for (Corsista c : AdminFacade.getInstance().getAllCorsista()) {
 						String precedenti = new String();
-						if(c.getPrecedentiFormativi()==0)
+						if (c.getPrecedentiFormativi() == 0)
 							precedenti = "No";
 						else
 							precedenti = "Si";
@@ -94,10 +106,68 @@ else {
 
 			</table>
 		</div>
-		
+
+
+		<div class="table-responsive">
+			<h3>Elenco corsi disponibili</h3>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Aula</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (Corso c : AdminFacade.getInstance().getCorsiDisponibili()) {
+						String precedenti = new String();
+					%>
+					<tr>
+						<td><%=c.getNomeCorso()%></td>
+						<td><%=c.getAula()%></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+
+			</table>
 		</div>
+
+
+		<div class="table-responsive">
+
+			<h3>Elenco docenti che tengono pi&ugrave; di un corso</h3>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th>Cv</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for (Docente d : AdminFacade.getInstance().getDocentiMultiCorso()) {
+						String precedenti = new String();
+					%>
+					<tr>
+						<td><%=d.getNome()%></td>
+						<td><%=d.getCognome()%></td>
+						<td><%=d.getCv()%></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+
+			</table>
+		</div>
+	</div>
 </body>
 </html>
+
 <%
 }
 %>
