@@ -23,7 +23,7 @@ public class AdminFacade {
 	private DocenteBC docenteBC;
 	
 	
-	public AdminFacade() {
+	private AdminFacade() {
 	}
 	
 	public static AdminFacade getInstance() {
