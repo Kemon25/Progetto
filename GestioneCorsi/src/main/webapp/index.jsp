@@ -1,4 +1,5 @@
 <%
+
 if(session.getAttribute("username") != null)
 	response.sendRedirect("home.jsp");
 else {
@@ -18,18 +19,18 @@ else {
 		<header class="page-header">
 			<h3>Inserire i dati d'accesso</h3>
 		</header>
-		<%
-		if(session.getAttribute("hitCount")!= null){
-		int hitCount= (int)session.getAttribute("hitCount");
-		if(hitCount > 0){
-		%>
+		
+		<%if(session.getAttribute("hitCount")!=null)
+			if((int) session.getAttribute("hitCount") >0){
+			%>
 		<div>
 		<p>
-			tentativi di accesso rimanenti: <strong> <%=5-hitCount%>
+			tentativi di accesso rimanenti: <strong> <%= 5-((int)session.getAttribute("hitCount")) %>
 			</strong>
 		</p>
 		</div>
-		<%}}%>
+		<%} %>
+		
 		<form action="/<%=application.getServletContextName()%>/controlloAccesso"
 			method="post" class="form-horizontal">
 			<div class="form-group">
@@ -60,6 +61,7 @@ else {
 					<button type="submit" class="btn btn-warning">
 						Login&nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span>
 					</button>
+					
 				</div>
 			</div>
 		</form>

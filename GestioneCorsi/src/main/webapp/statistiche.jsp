@@ -4,7 +4,7 @@
 <%@page import="it.betacom.businesscomponent.model.Corso"%>
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
 <%
-if (session.getAttribute("username") != null)
+if (session.getAttribute("username") == null)
 	response.sendRedirect("index.jsp");
 else {
 %>
@@ -64,6 +64,7 @@ else {
 		</div>
 		
 		<div class="table-responsive">
+		<h3>Elenco Corsisti</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
