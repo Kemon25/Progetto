@@ -14,7 +14,6 @@ else {
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<jsp:include page="nav.jsp"/>
 	<div class="container">
 		<header class="page-header">
 			<h3>Inserire i dati d'accesso</h3>
