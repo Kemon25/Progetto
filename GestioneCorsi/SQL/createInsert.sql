@@ -1,4 +1,4 @@
-insert into admin values('admin','Max','Ghianda','pass');
+insert into admin values('admin','Max','Ghianda','1aB1d4c9£1c#90@73M25ic6z92<71<ddzf08c9R44dbc672$');
 insert into docente values(docente_seq.nextval,'Angelo','Iossa','java;c;c++;');
 insert into docente values(docente_seq.nextval,'Gabriel','Carlino','php;c;c++;');
 insert into docente values(docente_seq.nextval,'Stefano','Fossen','css;java;html;');
