@@ -87,7 +87,7 @@ class CorsoCorsistaDAOTest {
 		try {
 			DBAccess.closeConnection();
 			CorsoDAO.getFactory().delete(conn, 2);
-			CorsistaDAO.getFactory().delete(conn, corsista);
+			CorsistaDAO.getFactory().delete(conn, 1);
 		
 			
 		}	catch (DAOException e) {
