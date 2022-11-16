@@ -1,6 +1,6 @@
 package test.it.betacom.architecture.dbaccess;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 

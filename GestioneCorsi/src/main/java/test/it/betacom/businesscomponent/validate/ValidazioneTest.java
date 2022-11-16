@@ -71,14 +71,16 @@ class ValidazioneTest {
 		assertEquals(false, validazione.dateCorso(null, calFine.getTime()));
 
 	}
+
 	@Test
 	@Order(3)
 	void commenti() {
 		assertEquals(true, validazione.commenti(null));
 		assertEquals(true, validazione.commenti(null));
-		assertEquals(false, validazione.commenti("12345jsdbvjffbajdbiefabsfeagsrdhtafegsrteqrwewqweqwegwteherwehweryt3weygrsefasgrhdtrgeawetyhtewyerwrytwrqtjhyrtewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"));
+		assertEquals(false, validazione.commenti(
+				"12345jsdbvjffbajdbiefabsfeagsrdhtafegsrteqrwewqweqwegwteherwehweryt3weygrsefasgrhdtrgeawetyhtewyerwrytwrqtjhyrtewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"));
 	}
-	
+
 	@Test
 	@Order(4)
 	void aula() {
@@ -86,12 +88,21 @@ class ValidazioneTest {
 			assertEquals(true, validazione.aulaCorso("aaaa"));
 			assertEquals(false, validazione.aulaCorso("aaaaa"));
 			assertEquals(false, validazione.aulaCorso("aaa"));
-			assertEquals(false, validazione.aulaCorso("aaa1"));
+			assertEquals(true, validazione.aulaCorso("aaa1"));
 			assertEquals(false, validazione.aulaCorso("aaa&"));
 			assertEquals(false, validazione.aulaCorso(null));
 		} catch (Exception exc) {
 			fail("Motivo: " + exc.getMessage());
 		}
+	}
+
+	@Test
+	@Order(5)
+	void prezzo() {
+		assertEquals(true, validazione.prezzo(123456.12));
+		assertEquals(true, validazione.prezzo(123456.123));
+		assertEquals(false, validazione.prezzo(1234567.12));
+		assertEquals(true, validazione.prezzo(0));
 	}
 
 	@AfterAll

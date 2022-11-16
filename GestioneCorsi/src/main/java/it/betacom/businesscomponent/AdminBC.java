@@ -2,7 +2,6 @@ package it.betacom.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 import it.betacom.architecture.dao.AdminDAO;
 import it.betacom.architecture.dao.DAOException;

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
 
-
 import it.betacom.businesscomponent.model.Corso;
 import it.betacom.businesscomponent.model.CorsoCorsista;
 

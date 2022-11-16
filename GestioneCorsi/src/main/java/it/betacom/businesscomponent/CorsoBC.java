@@ -33,7 +33,9 @@ public class CorsoBC {
 		try {
 			if (validazione.nomeCorso(corso.getNomeCorso())
 					&& validazione.dateCorso(corso.getDataInizio(), corso.getDataFine())
-					&& validazione.commenti(corso.getCommenti()) && validazione.aulaCorso(corso.getAula()))
+					&& validazione.commenti(corso.getCommenti()) 
+					&& validazione.aulaCorso(corso.getAula())
+					&& validazione.prezzo(corso.getCosto()))				
 				if (dBC.getById(corso.getIdDocente()) != null) {
 					CorsoDAO.getFactory().create(conn, corso);
 					return true;
@@ -143,7 +145,7 @@ public class CorsoBC {
 					corsiDisponibili.add(c);
 				}
 			}
-		} catch (DAOException | ClassNotFoundException | IOException exc) {
+		} catch (DAOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
 		}

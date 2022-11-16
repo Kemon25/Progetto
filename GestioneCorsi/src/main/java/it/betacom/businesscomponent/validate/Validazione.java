@@ -1,11 +1,9 @@
 package it.betacom.businesscomponent.validate;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import it.betacom.architecture.dao.DAOException;
 import it.betacom.businesscomponent.CorsoCorsistaBC;
 import it.betacom.businesscomponent.model.Corso;
 
@@ -18,7 +16,7 @@ public class Validazione {
 	private Validazione() {
 	}
 
-	public boolean getStatoCorso(Corso corso) throws DAOException, ClassNotFoundException, IOException {
+	public boolean getStatoCorso(Corso corso) {
 		CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
 		if (corso != null) {
 			int capienza = ccBC.getNumCorsistaByIdCorso(corso.getIdCorso());
@@ -84,4 +82,14 @@ public class Validazione {
 		}
 		return false;
 	}
+
+	public boolean prezzo(double prezzo) {
+		// cast prezzo a int, cast int in string
+		int length = String.valueOf(((int) prezzo)).length();
+		if (length <= 6) {
+			return true;
+		}
+		return false;
+	}
+
 }

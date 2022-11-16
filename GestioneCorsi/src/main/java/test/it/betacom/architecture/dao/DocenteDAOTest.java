@@ -1,6 +1,6 @@
 package test.it.betacom.architecture.dao;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.sql.Connection;

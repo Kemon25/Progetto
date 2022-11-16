@@ -1,6 +1,6 @@
 package test.it.betacom.architecture.dao;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -8,10 +8,10 @@ import java.util.GregorianCalendar;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import it.betacom.architecture.dao.CorsistaDAO;
 import it.betacom.architecture.dao.CorsoCorsistaDAO;

@@ -1,6 +1,6 @@
 package test.it.betacom.businesscomponent.idgenerator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
