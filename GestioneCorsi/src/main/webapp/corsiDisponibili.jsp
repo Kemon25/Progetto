@@ -1,19 +1,14 @@
+<%@page import="it.betacom.businesscomponent.model.Corso"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.text.DateFormat"%>
-<%@page import="java.sql.Date"%>
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
-<%@page import="it.betacom.businesscomponent.DocenteBC"%>
-<%@page import="it.betacom.businesscomponent.CorsoBC"%>
-<%@page import="it.betacom.businesscomponent.model.Corso"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Arrays"%>
 
 <%
-/*
 	if(session.getAttribute("username") == null) {
 		response.sendRedirect("index.jsp");
-	} else {
-	*/	
+	} else {	
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -90,7 +85,5 @@
 </body>
 </html>
 <%
-/*
 	}
-*/
 %>
