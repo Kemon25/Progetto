@@ -151,4 +151,15 @@ public class CorsoBC {
 		}
 		return corsiDisponibili;
 	}
+	
+	public Corso getById (long id) {
+		Corso corso = new Corso();
+		try {
+			corso = CorsoDAO.getFactory().getById(conn, id);
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+		}
+		return corso;
+	}
 }

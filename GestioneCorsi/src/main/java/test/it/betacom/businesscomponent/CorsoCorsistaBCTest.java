@@ -77,7 +77,7 @@ class CorsoCorsistaBCTest {
 			for (Corso c : corsiIscrivibili) {
 				System.out.println(c.toString());
 			}
-		} catch (DAOException exc) {
+		} catch (Exception exc) {
 			fail("Motivo: " + exc.getMessage());
 		}
 	}

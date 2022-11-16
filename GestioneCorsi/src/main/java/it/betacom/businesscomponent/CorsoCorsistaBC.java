@@ -56,7 +56,7 @@ public class CorsoCorsistaBC {
 		return num;
 	}
 
-	public ArrayList<Corso> getCorsoMaxfreq() throws DAOException {
+	public ArrayList<Corso> getCorsoMaxfreq() {
 		int maxFreq = 0;
 		ArrayList<Corso> corsi = new ArrayList<Corso>();
 		ArrayList<Corso> corsiMaxFreq = new ArrayList<Corso>();
