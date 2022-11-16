@@ -9,6 +9,7 @@ import it.betacom.architecture.dao.DAOException;
 import it.betacom.architecture.dbaccess.DBAccess;
 import it.betacom.businesscomponent.idgenerator.CorsistaIdGenerator;
 import it.betacom.businesscomponent.model.Corsista;
+import it.betacom.businesscomponent.validate.Validazione;
 
 public class CorsistaBC {
 	private Connection conn;
@@ -17,9 +18,28 @@ public class CorsistaBC {
 		conn = DBAccess.getConnection();
 	}
 	
-	public void create(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
+	public boolean create(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
+		boolean valido = false;
+		
 		corsista.setId(CorsistaIdGenerator.getInstance().getNextId());
-		CorsistaDAO.getFactory().create(conn, corsista);
+		
+		if((Validazione.getFactory().nomeCorsista(corsista.getNome())) &&
+				(Validazione.getFactory().cognomeCorsista(corsista.getCognome()))) {
+				//&& (Validazione.getFactory().precedentiFormativi(corsista.getPrecedentiFormativi())))
+			valido = true;
+			System.out.println("Nome e cognome nel formato corretto");
+		} else {
+			System.out.println("Nome o cognome non nel formato corretto");
+		}
+		
+		if(valido) {
+			CorsistaDAO.getFactory().create(conn, corsista);
+			System.out.println("Corsista creato!");
+		} else {
+			System.out.println("Corsista non creato!");
+		}
+		
+		return valido;
 	}
 	
 	public ArrayList<Corsista> getAll() throws DAOException{
