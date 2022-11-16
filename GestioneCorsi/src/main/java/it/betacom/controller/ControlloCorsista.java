@@ -39,6 +39,8 @@ public class ControlloCorsista extends HttpServlet {
 				AdminFacade.getInstance().create(corsoCorsista);
 				
 				response.sendRedirect("listaCorsisisti.jsp");
+				request.setAttribute("idCorso", corso.getIdCorso());
+				request.setAttribute("idCorsista", corsista.getId());
 			}else {
 				request.setAttribute("errore", 2);
 				response.sendRedirect("errorCreate.jsp");
@@ -50,7 +52,10 @@ public class ControlloCorsista extends HttpServlet {
 				corsoCorsista.setIdCorso(corso.getIdCorso());
 				
 				AdminFacade.getInstance().create(corsoCorsista);
+				
 				response.sendRedirect("listaCorsisisti.jsp");
+				request.setAttribute("idCorso", corso.getIdCorso());
+				request.setAttribute("idCorsista", corsista.getId());
 			}else {
 				request.setAttribute("errore", 2);
 				AdminFacade.getInstance().deleteCorso(corso.getIdCorso());
