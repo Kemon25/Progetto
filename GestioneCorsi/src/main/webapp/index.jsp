@@ -19,6 +19,18 @@ else {
 		<header class="page-header">
 			<h3>Inserire i dati d'accesso</h3>
 		</header>
+		<%
+		if(session.getAttribute("hitCount")!= null){
+		int hitCount= (int)session.getAttribute("hitCount");
+		if(hitCount > 0){
+		%>
+		<div>
+		<p>
+			tentativi di accesso: <strong> <%=hitCount%>
+			</strong>
+		</p>
+		</div>
+		<%}}%>
 		<form action="/<%=application.getServletContextName()%>/controlloAccesso"
 			method="post" class="form-horizontal">
 			<div class="form-group">
