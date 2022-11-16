@@ -1,4 +1,4 @@
-	package it.betacom.businesscomponent;
+package it.betacom.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,45 +11,49 @@ import it.betacom.businesscomponent.model.Admin;
 import it.betacom.businesscomponent.security.Algoritmo;
 
 public class AdminBC {
-	
+
 	private Connection conn;
-	
-	public AdminBC() throws  ClassNotFoundException, IOException, DAOException{
-		conn=DBAccess.getConnection();
+
+	public AdminBC() throws ClassNotFoundException, IOException, DAOException {
+		conn = DBAccess.getConnection();
 	}
-	
-	public boolean accesso(String username, String password) throws DAOException {
-		
+
+	public boolean accesso(String username, String password) {
+
 		Admin a = null;
-		
+
 		try {
-			
+
 			a = new Admin();
-			a=AdminDAO.getFactory().getByUsername(conn, username);
-			
-			if(a.getPassword().equals(Algoritmo.convertiMD5(password)))
+			a = AdminDAO.getFactory().getByUsername(conn, username);
+			if (a == null)
+				return false;
+			if (a.getPassword().equals(Algoritmo.convertiMD5(password)))
 				return true;
-			return false;
-		}catch(SQLException sql) {
-			
-			throw new DAOException(sql);
-			
+
+		} catch (DAOException exc) {
+
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+
 		}
+		return false;
 	}
-	
-	public Admin getAdmin(String username) throws DAOException {
-		
+
+	public Admin getAdmin(String username) {
+
 		Admin a = null;
-		
+
 		try {
-			
+
 			a = new Admin();
-			a=AdminDAO.getFactory().getByUsername(conn, username);
-			
-		}catch(SQLException sql) {
-			
-			throw new DAOException(sql);
-			
+			a = AdminDAO.getFactory().getByUsername(conn, username);
+
+		} catch (DAOException exc) {
+
+			exc.printStackTrace();
+			System.err.println(exc.getMessage());
+
 		}
 		return a;
 	}
