@@ -23,7 +23,6 @@ public class ControlloAccesso extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
-		
 		session.setAttribute("hitCount", Integer.valueOf(hitCount));
 
 		AdminBC aBC = new AdminBC();
@@ -32,10 +31,13 @@ public class ControlloAccesso extends HttpServlet {
 			response.sendRedirect("home.jsp");
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
-		}
-		else 
+		} else if(hitCount < 5) { 
 			response.sendRedirect("index.jsp");
-		
+			hitCount++;
+		} else if(hitCount > 5) {
+			response.sendRedirect("errorLogin.jsp");
+			session.invalidate();
+		}
 	}
 
 }
