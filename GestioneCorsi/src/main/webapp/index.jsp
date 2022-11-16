@@ -25,7 +25,7 @@ else {
 		%>
 		<div>
 		<p>
-			tentativi di accesso: <strong> <%=5-hitCount%>
+			tentativi di accesso rimanenti: <strong> <%=5-hitCount%>
 			</strong>
 		</p>
 		</div>

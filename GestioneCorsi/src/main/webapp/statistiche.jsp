@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="it.betacom.businesscomponent.model.Corso"%>
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
 <%
@@ -38,9 +40,10 @@ else {
 		<%}%>
 		</div>
 		
+		<%DateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); %>
 		<div>
 		<p>
-			Data inizio dell'ultimo corso: <strong> <%=String.format("yyyy-MM-dd",AdminFacade.getInstance().getUltimoCorso()) %>
+			Da inizio dell'ultimo corso: <strong> <%=formato.format(AdminFacade.getInstance().getUltimoCorso())%>
 			</strong>
 		</p>
 		</div>
