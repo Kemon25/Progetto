@@ -33,18 +33,18 @@ public class CorsoBC {
 		try {
 			if (validazione.nomeCorso(corso.getNomeCorso())
 					&& validazione.dateCorso(corso.getDataInizio(), corso.getDataFine())
-					&& validazione.commenti(corso.getCommenti()) 
-					&& validazione.aulaCorso(corso.getAula())
-					&& validazione.prezzo(corso.getCosto()))				
+					&& validazione.commenti(corso.getCommenti()) && validazione.aulaCorso(corso.getAula())
+					&& validazione.prezzo(corso.getCosto()))
 				if (dBC.getById(corso.getIdDocente()) != null) {
 					CorsoDAO.getFactory().create(conn, corso);
 					return true;
-				}		
-		
+				}
+
 		} catch (DAOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
-		}return false;
+		}
+		return false;
 	}
 
 	public void delete(long idCorso) {
@@ -81,26 +81,34 @@ public class CorsoBC {
 	public int getMediaCorsi() {
 		GregorianCalendar calInizio = new GregorianCalendar();
 		GregorianCalendar calFine = new GregorianCalendar();
-		ArrayList<Corso> corsi=null;
-		int totale=0;
-		try {		
-		corsi = CorsoDAO.getFactory().getAll(conn);
-		for(Corso c :corsi) {
-		calInizio.setTime(c.getDataInizio());
-		calFine.setTime(c.getDataFine());
+		ArrayList<Corso> corsi = null;
+		int totale = 0;
+		try {
+			corsi = CorsoDAO.getFactory().getAll(conn);
+			for (Corso c : corsi) {
+				calInizio.setTime(c.getDataInizio());
+				calFine.setTime(c.getDataFine());
 
-		int anno = (calFine.get(Calendar.YEAR) - calInizio.get(Calendar.YEAR))*365;
-		int giorni = calFine.get(Calendar.DAY_OF_YEAR) - calInizio.get(Calendar.DAY_OF_YEAR);
-		totale+=anno+giorni;
-	
-		}	
-				
-		
-		}catch(DAOException exc) {
+				int anno = (calFine.get(Calendar.YEAR) - calInizio.get(Calendar.YEAR)) * 365;
+				int giorni = calFine.get(Calendar.DAY_OF_YEAR) - calInizio.get(Calendar.DAY_OF_YEAR)+1;
+				totale += ((anno + giorni) / 7)*5;
+				for (int i = 0; i < (anno + giorni) % 7; i++) {
+					int giorno = i + calInizio.get(Calendar.DAY_OF_WEEK);
+					switch (giorno) {
+					case Calendar.SATURDAY:
+					case Calendar.SUNDAY:
+						break;
+					default:
+						totale++;
+						break;
+					}	
+				}
+			}
+		} catch (DAOException exc) {
 			exc.printStackTrace();
-			System.err.println(exc.getMessage());	
+			System.err.println(exc.getMessage());
 		}
-		return totale/corsi.size();
+		return totale / corsi.size();
 	}
 
 	public int getNumCommenti() {
@@ -121,7 +129,7 @@ public class CorsoBC {
 
 	public ArrayList<Docente> getDocentiMultiCorso() {
 		ArrayList<Docente> multidocente = new ArrayList<Docente>();
-		DocenteBC docente= new DocenteBC();
+		DocenteBC docente = new DocenteBC();
 		try {
 			ArrayList<Docente> docenti = docente.getAll();
 			for (Docente d : docenti) {
@@ -151,8 +159,8 @@ public class CorsoBC {
 		}
 		return corsiDisponibili;
 	}
-	
-	public Corso getById (long id) {
+
+	public Corso getById(long id) {
 		Corso corso = new Corso();
 		try {
 			corso = CorsoDAO.getFactory().getById(conn, id);
