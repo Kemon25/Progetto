@@ -29,8 +29,8 @@ class CorsoBCTest {
 		corso1.setIdCorso(1);
 		corso1.setIdDocente(1);
 		corso1.setNomeCorso("Algoritmica");
-		corso1.setDataInizio(new GregorianCalendar(2022, 11, 1).getTime());
-		corso1.setDataFine(new GregorianCalendar(2022, 12, 23).getTime());
+		corso1.setDataInizio(new GregorianCalendar(2023, 1, 1).getTime());
+		corso1.setDataFine(new GregorianCalendar(2023, 2, 12).getTime());
 		corso1.setCosto(500);
 		corso1.setCommenti("si fanno gli algoritmi");
 		corso1.setAula("A1B1");
@@ -39,8 +39,8 @@ class CorsoBCTest {
 		corso2.setIdCorso(2);
 		corso2.setIdDocente(1);
 		corso2.setNomeCorso("GPO");
-		corso2.setDataInizio(new GregorianCalendar(2022, 11, 17).getTime());
-		corso2.setDataFine(new GregorianCalendar(2050, 10, 25).getTime());
+		corso2.setDataInizio(new GregorianCalendar(2022, 10, 30).getTime());
+		corso2.setDataFine(new GregorianCalendar(2023, 4, 19).getTime());
 		corso2.setCosto(1000);
 		corso2.setCommenti("Gestione D'impresa");
 		corso2.setAula("B2B5");
@@ -49,8 +49,8 @@ class CorsoBCTest {
 		corso3.setIdCorso(3);
 		corso3.setIdDocente(1);
 		corso3.setNomeCorso("java");
-		corso3.setDataInizio(new GregorianCalendar(2022, 11, 26).getTime());
-		corso3.setDataFine(new GregorianCalendar(2023, 1, 13).getTime());
+		corso3.setDataInizio(new GregorianCalendar(2022, 10, 21).getTime());
+		corso3.setDataFine(new GregorianCalendar(2022, 11, 19).getTime());
 		corso3.setCosto(1000);
 		corso3.setCommenti("java EE");
 		corso3.setAula("B4E3");
