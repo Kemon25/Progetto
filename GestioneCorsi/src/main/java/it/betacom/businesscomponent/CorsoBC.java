@@ -9,7 +9,6 @@ import java.util.GregorianCalendar;
 
 import it.betacom.architecture.dao.CorsoDAO;
 import it.betacom.architecture.dao.DAOException;
-import it.betacom.architecture.dao.DocenteDAO;
 import it.betacom.architecture.dbaccess.DBAccess;
 import it.betacom.businesscomponent.model.Corso;
 import it.betacom.businesscomponent.model.Docente;
@@ -93,8 +92,7 @@ public class CorsoBC {
 		totale+=anno+giorni;
 	
 		}	
-		
-		
+				
 		
 		}catch(DAOException exc) {
 			exc.printStackTrace();
@@ -121,8 +119,9 @@ public class CorsoBC {
 
 	public ArrayList<Docente> getDocentiMultiCorso() {
 		ArrayList<Docente> multidocente = new ArrayList<Docente>();
+		DocenteBC docente= new DocenteBC();
 		try {
-			ArrayList<Docente> docenti = DocenteDAO.getFactory().getAll(conn);
+			ArrayList<Docente> docenti = docente.getAll();
 			for (Docente d : docenti) {
 				ArrayList<Corso> corsi = CorsoDAO.getFactory().getCorsiByIdDocente(conn, d.getId());
 				if (corsi.size() > 1)

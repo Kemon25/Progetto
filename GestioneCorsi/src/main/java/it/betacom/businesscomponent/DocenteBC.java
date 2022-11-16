@@ -2,6 +2,7 @@ package it.betacom.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import it.betacom.architecture.dao.DAOException;
 import it.betacom.architecture.dao.DocenteDAO;
@@ -32,4 +33,16 @@ public class DocenteBC {
 		return docente;
 		
 	}
+
+	public ArrayList<Docente> getAll() {
+		ArrayList <Docente> docenti=new ArrayList<Docente>();
+		try {
+			docenti= DocenteDAO.getFactory().getAll(conn);	
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		return docenti; 
+	}
+	
+	
 }
