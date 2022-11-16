@@ -76,7 +76,7 @@ public class Validazione {
 	}
 
 	public boolean aulaCorso(String aula) {
-		String expression = "^[a-zA-Z0.9]+";
+		String expression = "^[a-zA-Z0-9]+";
 		if ((aula != null) && (aula.length() == 4)) {
 			if (aula.matches(expression)) {
 				return true;
