@@ -95,7 +95,7 @@ public class CorsoCorsistaBC {
 					l.add(c);
 			}
 
-		} catch (ClassNotFoundException | DAOException | IOException exc) {
+		} catch (DAOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
 		}
