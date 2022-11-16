@@ -41,12 +41,12 @@ public class CorsoCorsistaBC {
 	}
 		
 	public ArrayList<Corso> getCorsiByIdCorsista(long idCorsista) throws DAOException{
-		return CorsoCorsistaDAO.getFactory().getCorsiBYIdCorsista(conn, idCorsista);
+		return CorsoCorsistaDAO.getFactory().getCorsiByIdCorsista(conn, idCorsista);
 	}
 	
 	
 	public int getNumCorsistaByIdCorso(long idCorso) throws DAOException{
-		return CorsoCorsistaDAO.getFactory().getNumCorsistaBYIdCorso(conn, idCorso);
+		return CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, idCorso);
 	}
 		
 	
@@ -58,13 +58,13 @@ public class CorsoCorsistaBC {
 		ArrayList<Integer> frequenze = new ArrayList<Integer>(corsi.size());
 		
 		for (Corso corso : corsi) {
-			frequenze.add(CorsoCorsistaDAO.getFactory().getNumCorsistaBYIdCorso(conn, corso.getIdCorso()));
+			frequenze.add(CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, corso.getIdCorso()));
 		}
 		maxFreq = Collections.max(frequenze);
 		
 		int maxFreqSwap = 0;
 		for (Corso corso : corsi) {
-			maxFreqSwap = CorsoCorsistaDAO.getFactory().getNumCorsistaBYIdCorso(conn, corso.getIdCorso());
+			maxFreqSwap = CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, corso.getIdCorso());
 			if(maxFreqSwap ==  maxFreq) {
 				corsiMaxFreq.add(CorsoDAO.getFactory().getById(conn, corso.getIdCorso()));
 			}
