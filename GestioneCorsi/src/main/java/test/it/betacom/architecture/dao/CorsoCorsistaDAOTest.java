@@ -69,8 +69,8 @@ class CorsoCorsistaDAOTest {
 		ArrayList<Corso> l = new ArrayList<Corso>();
 		int num;
 		try {
-			l = CorsoCorsistaDAO.getFactory().getCorsiBYIdCorsista(conn, 1);
-			num = CorsoCorsistaDAO.getFactory().getNumCorsistaBYIdCorso(conn, 1);
+			l = CorsoCorsistaDAO.getFactory().getCorsiByIdCorsista(conn, 1);
+			num = CorsoCorsistaDAO.getFactory().getNumCorsistaByIdCorso(conn, 1);
 			
 		} catch (DAOException e) {
 			e.printStackTrace();		
