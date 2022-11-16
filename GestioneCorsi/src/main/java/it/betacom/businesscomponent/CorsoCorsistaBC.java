@@ -2,18 +2,13 @@ package it.betacom.businesscomponent;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 
 import it.betacom.architecture.dao.CorsoCorsistaDAO;
 import it.betacom.architecture.dao.CorsoDAO;
 import it.betacom.architecture.dao.DAOException;
 import it.betacom.architecture.dbaccess.DBAccess;
-import it.betacom.businesscomponent.idgenerator.CorsistaIdGenerator;
-import it.betacom.businesscomponent.idgenerator.CorsoIdGenerator;
 import it.betacom.businesscomponent.model.Corso;
 import it.betacom.businesscomponent.model.CorsoCorsista;
 import it.betacom.businesscomponent.validate.Validazione;

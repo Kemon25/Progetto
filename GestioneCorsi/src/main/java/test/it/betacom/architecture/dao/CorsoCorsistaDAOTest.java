@@ -98,7 +98,6 @@ class CorsoCorsistaDAOTest {
 		}	catch (DAOException e) {
 			e.printStackTrace();
 			fail("Motivo: " + e.getMessage());
-			
 		}
 	}
 	
