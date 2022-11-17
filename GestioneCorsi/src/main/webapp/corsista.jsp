@@ -108,7 +108,7 @@
 		</div>
 		
 		<p align="right">
-			<button onclick="location.href='home.jsp'" class="btn btn-primary">Home</button>
+			<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
 		</p>
 		
 	</div>
