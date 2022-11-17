@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="CDN.html"%>
 <meta charset="ISO-8859-1">
 <title>Modal Controllo Corsista</title>
 </head>
@@ -54,7 +53,7 @@
 					format : 'dd/mm/yyyy',
 					autoclose : true,
 					startDate : '01/01/1900',
-					endDate : new Date()
+					endDate : '31/12/2050'
 					}).on('changeDate');
 				});
 		</script>
@@ -76,7 +75,7 @@
 					format : 'dd/mm/yyyy',
 					autoclose : true,
 					startDate : '01/01/1900',
-					endDate : new Date()
+					endDate : '31/12/2050'
 					}).on('changeDate');
 				});
 		</script>

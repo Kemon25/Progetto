@@ -2,12 +2,13 @@
 <%@page import="it.betacom.businesscomponent.model.Corsista"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
 <%
-	if(session.getAttribute("username") == null) {
-		response.sendRedirect("index.jsp");
-	} else {	
+if (session.getAttribute("username") == null) {
+	response.sendRedirect("index.jsp");
+} else {
 %>
 
 <!DOCTYPE html>
@@ -59,22 +60,6 @@
 			data-target="#myModal">Creazione corsista</button>
 	</div>
 
-	<jsp:include page="modalControlloCorso.jsp" />
-	
-	<div class="btn-group">
-		<form action="statistiche.jsp">
-			<button type="submit" class="btn btn-default">Mostra
-				statistiche</button>
-		</form>
-	</div>
-
-	<div class="btn-group">
-		<form action="corsiDisponibili.jsp">
-			<button type="submit" class="btn btn-default">Elimina un
-				corso</button>
-		</form>
-	</div>
-	
 	<div class="modal fade" id="myModal">
 		<div class="modal-dialog">
 			<form action="<%=application.getContextPath()%>/controlloCorsista"
@@ -120,11 +105,14 @@
 
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Precedenti formativi</label>
+							<label class="col-md-5 control-label">Precedenti
+								formativi</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input type="radio" name="PrecedentiFormativi" id="precedentiFormativi" value=1> Si
-									<input type="radio" name="PrecedentiFormativi" id="precedentiFormativi" value=0> No
+									<input type="radio" name="PrecedentiFormativi"
+										id="precedentiFormativi" value=1> Si <input
+										type="radio" name="PrecedentiFormativi"
+										id="precedentiFormativi" value=0> No
 								</div>
 							</div>
 						</div>
@@ -140,12 +128,13 @@
 											secgli i corsi a cui iscriverti <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-										<% 
-											for(Corso c : AdminFacade.getInstance().getCorsiIscrivibili()) {
+											<%
+											for (Corso c : AdminFacade.getInstance().getCorsiIscrivibili()) {
 												int i = 0;
 												i++;
-										%>
-											<li><input type="checkbox" name="idCorso" id="idCorso<%=i%>" value=<%=c.getIdCorso() %>>&nbsp;<%= c.getNomeCorso() %></li>
+											%>
+											<li><input type="checkbox" name="idCorso"
+												id="idCorso<%=i%>" value=<%=c.getIdCorso()%>>&nbsp;<%=c.getNomeCorso()%></li>
 											<%
 											}
 											%>
@@ -156,7 +145,8 @@
 
 						</div>
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-default">Crea corsista</button>
+							<button type="submit" class="btn btn-default">Crea
+								corsista</button>
 							<button type="submit" class="btn btn-default"
 								data-dismiss="modal">Annulla</button>
 						</div>
@@ -164,6 +154,20 @@
 				</div>
 			</form>
 		</div>
+	</div>
+
+	<jsp:include page="modalControlloCorso.jsp" />
+		
+	<div class="btn-group">
+		<form action="statistiche.jsp">
+			<button type="submit" class="btn btn-default">Mostra statistiche</button>
+		</form>
+	</div>
+
+	<div class="btn-group">
+		<form action="corsiDisponibili.jsp">
+			<button type="submit" class="btn btn-default">Elimina un corso</button>
+		</form>
 	</div>
 </body>
 </html>
