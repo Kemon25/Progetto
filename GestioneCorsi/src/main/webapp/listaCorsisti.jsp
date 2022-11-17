@@ -30,30 +30,28 @@
 				</thead>
 				<tbody>
 					<%
-						String s = String.valueOf(request.getAttribute("idCorsista"));
+						String id = String.valueOf(request.getAttribute("idCorsista"));
 						ArrayList<Corsista> corsisti  = AdminFacade.getInstance().getAllCorsista();
-							for(Corsista c : corsisti){
-								if(c.getId() == Long.parseLong(s)){
-								%>
-					<tr bgcolor="yellow">
-						<td><%=c.getNome() %></td>
-						<td><%=c.getCognome() %></td>
-						<td><%=c.getPrecedentiFormativi()%></td>
-					</tr>
+						Corsista corsista = AdminFacade.getInstance().getByIdCorsista(Long.parseLong(id));
+					%>
+						<tr bgcolor="yellow">
+							<td><%=corsista.getNome() %></td>
+							<td><%=corsista.getCognome() %></td>
+							<td><%=corsista.getPrecedentiFormativi()%></td>
+						</tr>
+					<%
+						for(Corsista c : corsisti){
+							if(c.getId() != Long.parseLong(id)){
+					%>
+						<tr>
+							<td><%=c.getNome() %></td>
+							<td><%=c.getCognome() %></td>
+							<td><%=c.getPrecedentiFormativi()%></td>
+						</tr>
 					<% 
 								}
-								%>
-
-
-					<tr>
-						<td><%=c.getNome() %></td>
-						<td><%=c.getCognome() %></td>
-						<td><%=c.getPrecedentiFormativi()%></td>
-					</tr>
-					<%
-							}
-								
-						%>
+						}
+					%>
 				</tbody>
 			</table>
 		</div>
