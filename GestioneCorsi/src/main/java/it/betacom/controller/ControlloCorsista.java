@@ -12,7 +12,7 @@ import it.betacom.businesscomponent.facade.AdminFacade;
 import it.betacom.businesscomponent.model.Corsista;
 import it.betacom.businesscomponent.model.CorsoCorsista;
 
-@WebServlet("controlloCorsista")
+@WebServlet("/controlloCorsista")
 public class ControlloCorsista extends HttpServlet {
 
 	private static final long serialVersionUID = 4538690454132379945L;
@@ -37,7 +37,7 @@ public class ControlloCorsista extends HttpServlet {
 					}
 				}
 				
-				response.sendRedirect("listaCorsisisti.jsp");
+				response.sendRedirect("listaCorsisti.jsp");
 				request.setAttribute("idCorsista", idCorsista);
 			
 			}else {
