@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 import it.betacom.architecture.dao.CorsoCorsistaDAO;
 import it.betacom.architecture.dao.CorsoDAO;
@@ -85,20 +86,17 @@ public class CorsoCorsistaBC {
 	}
 
 	public ArrayList<Corso> getCorsiIscrivibili() {
-		ArrayList<Corso> l = new ArrayList<Corso>();
-
+		ArrayList<Corso> corsiIscrivibili = new ArrayList<Corso>();
 		try {
-
 			ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
 			for (Corso c : corsi) {
-				if (Validazione.getFactory().getStatoCorso(c))
-					l.add(c);
+				if (Validazione.getFactory().getStatoCorso(c) && c.getDataInizio().getTime() >= new Date().getTime())
+					corsiIscrivibili.add(c);
 			}
-
 		} catch (DAOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
 		}
-		return l;
+		return corsiIscrivibili;
 	}
 }
