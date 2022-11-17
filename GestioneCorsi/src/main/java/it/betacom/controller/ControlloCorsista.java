@@ -22,13 +22,15 @@ public class ControlloCorsista extends HttpServlet {
 		CorsoCorsista corsoCorsista = null;
 		long idCorsista=0;
 		long idCorso = 0;
+		String nomeAttributo = "";
 		
 		if(cors != null) {
 			idCorsista=cors.getId();
 				for(int i=1;i<=AdminFacade.getInstance().getCorsiIscrivibili().size();i++){
-					if(request.getAttribute("idCorso"+i)!=null) {
-						System.out.println("idCorso"+i);
-						idCorso=Long.parseLong((String) request.getAttribute("idCorso"+i));
+					nomeAttributo = "idCorso" + i;
+					if(request.getAttribute(nomeAttributo)!=null) {
+						System.out.println(nomeAttributo);
+						idCorso=Long.parseLong(String.valueOf(request.getAttribute(nomeAttributo)));
 						corsoCorsista = new CorsoCorsista();
 						corsoCorsista.setIdCorsista(idCorsista);
 						corsoCorsista.setIdCorso(idCorso);

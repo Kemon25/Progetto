@@ -131,9 +131,9 @@ if (session.getAttribute("username") == null) {
 											<%
 												int i = 0;
 											for (Corso c : AdminFacade.getInstance().getCorsiIscrivibili()) {
-												i++;
+												++i;
 											%>
-											<li><input type="checkbox" name="idCorso"
+											<li><input type="checkbox" name="idCorso<%=i%>"
 												id="idCorso<%=i%>" value=<%=c.getIdCorso()%>>&nbsp;<%=c.getNomeCorso()%></li>
 											<%
 											}
