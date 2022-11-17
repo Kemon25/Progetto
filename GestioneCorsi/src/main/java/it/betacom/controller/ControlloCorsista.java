@@ -45,8 +45,7 @@ public class ControlloCorsista extends HttpServlet {
 				request.getRequestDispatcher("listaCorsisti.jsp").forward(request, response);
 			
 			}else {
-				request.setAttribute("errore", 2);
-				response.sendRedirect("errorCreate.jsp");
+				response.sendRedirect("errorCorsista.jsp");
 			}
 	
 	}
