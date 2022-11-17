@@ -25,8 +25,8 @@ public class ControlloCorso extends HttpServlet {
 		if(c != null) {
 			response.sendRedirect("corsiDisponibili.jsp");
 		}else {
-			request.setAttribute("errore", 1);
-			response.sendRedirect("errorCreate.jsp");
+			response.sendRedirect("errorCorso.jsp");
+			
 		}
 	}
 	
