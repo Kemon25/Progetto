@@ -36,9 +36,9 @@ public class ControlloCorsista extends HttpServlet {
 						AdminFacade.getInstance().create(corsoCorsista);
 					}
 				}
-				
+				request.setAttribute("idCorsista", Long.valueOf(idCorsista));
 				response.sendRedirect("listaCorsisti.jsp");
-				request.setAttribute("idCorsista", idCorsista);
+				
 			
 			}else {
 				request.setAttribute("errore", 2);

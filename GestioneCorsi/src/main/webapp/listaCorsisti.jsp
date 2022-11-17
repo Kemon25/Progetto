@@ -30,7 +30,7 @@
 				</thead>
 				<tbody>
 					<%
-						String s = String.valueOf(request.getAttribute("idCorso"));
+						String s = String.valueOf(request.getAttribute("idCorsista"));
 						ArrayList<Corsista> corsisti  = AdminFacade.getInstance().getAllCorsista();
 							for(Corsista c : corsisti){
 								if(c.getId() == Long.parseLong(s)){
