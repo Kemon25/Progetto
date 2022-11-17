@@ -23,21 +23,23 @@ public class CorsistaBC {
 		}
 	}
 	
-	public boolean create(Corsista corsista) {
-		boolean valido = false;
-		
+	public Corsista create(Corsista corsista) {
 		try {
 			corsista.setId(CorsistaIdGenerator.getInstance().getNextId());
 		
 			if((Validazione.getFactory().nomeCorsista(corsista.getNome())) &&
-					(Validazione.getFactory().cognomeCorsista(corsista.getCognome())))
-					//&& (Validazione.getFactory().precedentiFormativi(corsista.getPrecedentiFormativi())))
-				valido = true;
+					(Validazione.getFactory().cognomeCorsista(corsista.getCognome()))) {
+				//&& (Validazione.getFactory().precedentiFormativi(corsista.getPrecedentiFormativi())))
+				
+				CorsistaDAO.getFactory().create(conn, corsista);
+				return corsista;
+			}
+					
 		} catch(ClassNotFoundException | DAOException | IOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
 		}
-		return valido;
+		return null;
 	}
 	
 	public ArrayList<Corsista> getAll() {

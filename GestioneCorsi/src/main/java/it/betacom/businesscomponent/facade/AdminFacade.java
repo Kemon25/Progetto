@@ -55,7 +55,7 @@ public class AdminFacade {
 	
 	//---------------------------------CorsistaBC
 	
-	public boolean createCorsista(Corsista corsista) {
+	public Corsista createCorsista(Corsista corsista) {
 		corsistaBC = new CorsistaBC();
 		return corsistaBC.create(corsista);
 	}
@@ -77,7 +77,7 @@ public class AdminFacade {
 	
 	//---------------------------------CorsoBC
 	
-	public boolean createCorso(Corso corso) {
+	public Corso createCorso(Corso corso) {
 		corsoBC = new CorsoBC();
 		return corsoBC.create(corso);
 	}
@@ -86,7 +86,7 @@ public class AdminFacade {
 		corsoBC = new CorsoBC();
 		corsoBC.delete(idCorso);
 	}
-
+	
 	public Date getUltimoCorso() {
 		corsoBC = new CorsoBC();
 		return corsoBC.getUltimoCorso();

@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 import it.betacom.architecture.dao.CorsoDAO;
 import it.betacom.architecture.dao.DAOException;
 import it.betacom.architecture.dbaccess.DBAccess;
+import it.betacom.businesscomponent.idgenerator.CorsoIdGenerator;
 import it.betacom.businesscomponent.model.Corso;
 import it.betacom.businesscomponent.model.Docente;
 import it.betacom.businesscomponent.validate.Validazione;
@@ -27,7 +28,7 @@ public class CorsoBC {
 		}
 	}
 
-	public boolean create(Corso corso) {
+	public Corso create(Corso corso) {
 		Validazione validazione = Validazione.getFactory();
 		DocenteBC dBC = new DocenteBC();
 		try {
@@ -36,15 +37,16 @@ public class CorsoBC {
 					&& validazione.commenti(corso.getCommenti()) && validazione.aulaCorso(corso.getAula())
 					&& validazione.prezzo(corso.getCosto()))
 				if (dBC.getById(corso.getIdDocente()) != null) {
+					corso.setIdCorso(CorsoIdGenerator.getIstance().getNextId());
 					CorsoDAO.getFactory().create(conn, corso);
-					return true;
+					return corso;
 				}
 
-		} catch (DAOException exc) {
+		} catch (DAOException | ClassNotFoundException | IOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
 		}
-		return false;
+		return null;
 	}
 
 	public void delete(long idCorso) {
