@@ -6,11 +6,12 @@
 <meta charset="ISO-8859-1">
 <title>Errore Login</title>
 <link rel="stylesheet" href="css/style.css">
+<meta http-equiv="refresh" content="1; url=/AutodistruzioneProva/autodistruzione">
 </head>
 <body>
 <div class="container">
 	<header class="page.header">
-		<h3>Tentativi finiti, mi spiace, il computer si autodistruggerà in 5 secondi</h3>
+		<h3>Tentativi esauriti</h3>
 	</header>
 </div>
 </body>
