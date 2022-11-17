@@ -20,9 +20,9 @@ public class ControlloCorso extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Corso corso = getCorso(request);
-		
-		AdminFacade.getInstance().createCorso(corso);
-		if(corso != null) {
+		Corso c = AdminFacade.getInstance().createCorso(corso);
+
+		if(c != null) {
 			response.sendRedirect("corsiDisponibili.jsp");
 		}else {
 			request.setAttribute("errore", 1);
@@ -49,6 +49,7 @@ public class ControlloCorso extends HttpServlet {
 			corso.setCosto(costo);
 			corso.setCommenti(commenti);
 			corso.setAula(aula);
+						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

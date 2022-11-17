@@ -34,14 +34,16 @@ public class CorsoBC {
 		try {
 			if (validazione.nomeCorso(corso.getNomeCorso())
 					&& validazione.dateCorso(corso.getDataInizio(), corso.getDataFine())
-					&& validazione.commenti(corso.getCommenti()) && validazione.aulaCorso(corso.getAula())
-					&& validazione.prezzo(corso.getCosto()))
+					&& validazione.commenti(corso.getCommenti()) 
+					&& validazione.aulaCorso(corso.getAula())
+					&& validazione.prezzo(corso.getCosto())
+					) {
 				if (dBC.getById(corso.getIdDocente()) != null) {
 					corso.setIdCorso(CorsoIdGenerator.getIstance().getNextId());
 					CorsoDAO.getFactory().create(conn, corso);
 					return corso;
 				}
-
+			}		
 		} catch (DAOException | ClassNotFoundException | IOException exc) {
 			exc.printStackTrace();
 			System.err.println(exc.getMessage());
