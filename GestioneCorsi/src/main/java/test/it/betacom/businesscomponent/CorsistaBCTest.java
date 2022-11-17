@@ -43,17 +43,17 @@ class CorsistaBCTest {
 	@Test
 	@Order(1)
 	void testCreate() {
-		if(cBC.create(c))
+		if(cBC.create(c) != null)
 			System.out.println("Nome e cognome nel formato corretto! Corsista creato");
 		else
 			System.out.println("Nome o cognome non nel formato corretto! Corsista non creato");
 		
-		if(cBC.create(c1))
+		if(cBC.create(c1) != null)
 			System.out.println("Nome e cognome nel formato corretto! Corsista creato");
 		else
 			System.out.println("Nome o cognome non nel formato corretto! Corsista non creato");
 		
-		if(cBC.create(c2))
+		if(cBC.create(c2) != null)
 			System.out.println("Nome e cognome nel formato corretto! Corsista creato");
 		else
 			System.out.println("Nome o cognome non nel formato corretto! Corsista non creato");
