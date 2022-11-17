@@ -15,9 +15,8 @@
 	<jsp:include page="nav.jsp" />
 	<div class="container">
 		<header class="page-header">
-			<h3>Corsi presenti</h3>
+			<h3>Lista corsisti</h3>
 		</header>
-
 
 		<div class="table-responsive">
 			<table class="table table-hover">
@@ -30,23 +29,32 @@
 				</thead>
 				<tbody>
 					<%
-						String id = String.valueOf(request.getAttribute("idCorsista"));
+						String id = String.valueOf(request.getParameter("idCorsista"));
 						ArrayList<Corsista> corsisti  = AdminFacade.getInstance().getAllCorsista();
 						Corsista corsista = AdminFacade.getInstance().getByIdCorsista(Long.parseLong(id));
+						String precedenti = new String();
+						if (corsista.getPrecedentiFormativi() == 0)
+							precedenti = "No";
+						else
+							precedenti = "Si";
 					%>
 						<tr bgcolor="yellow">
 							<td><%=corsista.getNome() %></td>
 							<td><%=corsista.getCognome() %></td>
-							<td><%=corsista.getPrecedentiFormativi()%></td>
+							<td><%=precedenti%></td>
 						</tr>
 					<%
 						for(Corsista c : corsisti){
 							if(c.getId() != Long.parseLong(id)){
+								if (c.getPrecedentiFormativi() == 0)
+									precedenti = "No";
+								else
+									precedenti = "Si";
 					%>
 						<tr>
 							<td><%=c.getNome() %></td>
 							<td><%=c.getCognome() %></td>
-							<td><%=c.getPrecedentiFormativi()%></td>
+							<td><%=precedenti%></td>
 						</tr>
 					<% 
 								}

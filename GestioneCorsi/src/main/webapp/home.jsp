@@ -78,8 +78,8 @@ if (session.getAttribute("username") == null) {
 
 
 						<div class="form-group">
-							<label class="col-md-5 control-label pull-left">Nome</label>
-							<div class="col-md-4 inputGroupContainer">
+							<label class="col-md-4 control-label" style="text-align: left;">Nome</label>
+							<div class="col-md-8 inputGroupContainer">
 								<div class="input-group">
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-user"></i>
@@ -91,8 +91,8 @@ if (session.getAttribute("username") == null) {
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label pull-left">Cognome</label>
-							<div class="col-md-4 inputGroupContainer">
+							<label class="col-md-4 control-label" style="text-align: left;">Cognome</label>
+							<div class="col-md-8 inputGroupContainer">
 								<div class="input-group">
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-user"></i>
@@ -105,21 +105,20 @@ if (session.getAttribute("username") == null) {
 
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Precedenti
-								formativi</label>
-							<div class="col-md-4">
+							<label class="col-md-4 control-label" style="text-align: left;">Precedenti formativi</label>
+							<div class="col-md-8">
 								<div class="input-group">
 									<input type="radio" name="PrecedentiFormativi"
-										id="precedentiFormativi" value=1> Si <input
-										type="radio" name="PrecedentiFormativi"
-										id="precedentiFormativi" value=0> No
+									id="precedentiFormativi" value=1> Si <input
+									type="radio" name="PrecedentiFormativi"
+									id="precedentiFormativi" value=0> No
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label pull-left">Corso</label>
-							<div class="col-md-4 inputGroupContainer">
+							<label class="col-md-4 control-label" style="text-align: left;">Corso</label>
+							<div class="col-md-8 inputGroupContainer">
 								<div class="input-group">
 
 									<div class="btn-group">
