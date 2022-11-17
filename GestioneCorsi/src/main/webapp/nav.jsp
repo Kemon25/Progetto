@@ -19,7 +19,7 @@
 					<span class="glyphicon glyphicon-home"></span> Home</a>
 				</li>
 				<li>
-					<a href="/<%=application.getServletContextName()%>/index.jsp">
+					<a href="/<%=application.getServletContextName()%>/logout.jsp">
 					<span class="glyphicon glyphicon-log-out"></span> Log-out</a>
 				</li>
 			</ul>
