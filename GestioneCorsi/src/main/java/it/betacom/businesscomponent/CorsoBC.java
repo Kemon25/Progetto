@@ -172,4 +172,16 @@ public class CorsoBC {
 		}
 		return corso;
 	}
+	
+	public  ArrayList<Corso> getAll(){
+		
+		ArrayList<Corso> corsi = new ArrayList<Corso>();
+		try {
+			corsi= CorsoDAO.getFactory().getAll(conn);
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		
+		return corsi;
+	}
 }

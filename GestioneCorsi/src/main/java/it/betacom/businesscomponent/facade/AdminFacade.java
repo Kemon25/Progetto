@@ -117,6 +117,11 @@ public class AdminFacade {
 		return corsoBC.getCorsiDisponibili();
 	}
 	
+	public ArrayList<Corso> getAllCorso() {
+		corsoBC = new CorsoBC();
+		return corsoBC.getAll();
+	}
+	
 	//---------------------------------CorsoCorsistaBC
 	
 	public void create(CorsoCorsista corsoCorsista) {
