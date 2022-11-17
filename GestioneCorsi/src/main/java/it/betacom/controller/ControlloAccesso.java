@@ -32,10 +32,13 @@ public class ControlloAccesso extends HttpServlet {
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
 		} else if(hitCount < 5) { 
+			System.out.println("dentro contatotre " + hitCount);
 			response.sendRedirect("index.jsp");
 			hitCount++;
-		} else if(hitCount > 5) {
+		} else if(hitCount >= 5) {
+			System.out.println("fine contatotre " + hitCount);
 			response.sendRedirect("errorLogin.jsp");
+			hitCount = 0;
 			session.invalidate();
 		}
 	}
