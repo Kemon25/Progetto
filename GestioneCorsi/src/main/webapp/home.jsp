@@ -2,8 +2,14 @@
 <%@page import="it.betacom.businesscomponent.model.Corsista"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%
+	if(session.getAttribute("username") == null) {
+		response.sendRedirect("index.jsp");
+	} else {	
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,8 +123,8 @@
 							<label class="col-md-5 control-label">Precedenti formativi</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=1> Si
-									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=0> No
+									<input type="radio" name="PrecedentiFormativi" id="precedentiFormativi" value=1> Si
+									<input type="radio" name="PrecedentiFormativi" id="precedentiFormativi" value=0> No
 								</div>
 							</div>
 						</div>
@@ -161,3 +167,6 @@
 	</div>
 </body>
 </html>
+<%
+}
+%>
