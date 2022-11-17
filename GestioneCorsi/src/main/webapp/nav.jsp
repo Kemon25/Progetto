@@ -18,10 +18,19 @@
 					<a href="/<%=application.getServletContextName()%>/home.jsp">
 					<span class="glyphicon glyphicon-home"></span> Home</a>
 				</li>
+				
+				<li>
+					<a href="/<%=application.getServletContextName()%>/error.jsp">
+					<span class="glyphicon glyphicon-gift"></span> Mi sento Fortunato</a>
+				</li>
+				
 				<li>
 					<a href="/<%=application.getServletContextName()%>/logout.jsp">
 					<span class="glyphicon glyphicon-log-out"></span> Log-out</a>
 				</li>
+				
+				
+				
 			</ul>
 		</div>
 	</div>

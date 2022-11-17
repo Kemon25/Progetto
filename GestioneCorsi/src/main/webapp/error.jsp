@@ -1,6 +1,8 @@
+<%@page import="java.util.Random"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isErrorPage="true"%>
+<% Random rand = new Random(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,30 +15,28 @@
 
 <div class="container">
 		<div class="page-header">
-			<h3>Errore nella pagina</h3>
+			<h3>Non sei stato fortunato</h3>
 		</div>
 		
 		
 		
 		<div class="panel panel-warning">
 			<div class="panel-heading">
-				<h4>Impossibile caricare la pagina richiesta</h4>
+				<h4>Ecco un meme per rallegrarti</h4>
 			</div>
 			<div class="panel-body">
-				
-				
-				
-				<p>Per segnalare un eventuale problema:&nbsp; 
-					<a href="mailto:betacom@tin.it">Contattare il supporto tecnico</a>
+	
+				<p>
+					<img src="img/<%= rand.nextInt(12) + 1 %>.png" alt="meme" height="400" width="auto">
 				</p>
-				
+
 				<div class="btn-group">
 					<button onclick="window.history.back()" class="btn btn-default">Indietro</button>	
 				</div>
 				
 				<div class="btn-group">
 					<button type="button" class="btn btn-default" data-toggle="modal"
-							data-target="#myModal">Ulteriori Dettagli</button>
+							data-target="#myModal">Dettagli Errore</button>
 				</div>
 				
 				<div id="myModal" class="modal fade" role="document">
