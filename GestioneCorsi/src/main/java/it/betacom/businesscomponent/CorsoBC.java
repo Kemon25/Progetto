@@ -153,7 +153,7 @@ public class CorsoBC {
 		try {
 			ArrayList<Corso> corsi = CorsoDAO.getFactory().getAll(conn);
 			for (Corso c : corsi) {
-				if (c.getDataInizio().getTime() > new Date().getTime() && Validazione.getFactory().getStatoCorso(c)) {
+				if (c.getDataInizio().getTime() >= new Date().getTime() && Validazione.getFactory().getStatoCorso(c)) {
 					corsiDisponibili.add(c);
 				}
 			}

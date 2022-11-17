@@ -68,8 +68,13 @@ class CorsoDAOTest {
 	@Order(3)
 	void testGetAll() {
 		try {
+			System.out.println("GetAll:");
 			ArrayList<Corso> corsi=CorsoDAO.getFactory().getAll(conn);
+			for (Corso corso : corsi) {
+				System.out.println(corso);
+			}
 			assertNotNull(corsi);
+			System.out.println("-------------------------------");
 		} catch(DAOException exc) {
 			exc.printStackTrace();
 			fail("Motivo: "+exc.getMessage());

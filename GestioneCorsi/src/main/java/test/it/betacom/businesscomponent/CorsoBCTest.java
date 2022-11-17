@@ -1,5 +1,6 @@
 package test.it.betacom.businesscomponent;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -99,10 +100,14 @@ class CorsoBCTest {
 	@Test
 	@Order(5)
 	void getCorsiDisponibili() {
-
+		System.out.println("Corsi disponibili");
 		corso = new CorsoBC();
-		System.out.println(corso.getCorsiDisponibili());
-
+		ArrayList<Corso> corsi = new ArrayList<Corso>();
+		corsi = corso.getCorsiDisponibili();
+		for (Corso corso : corsi) {
+			System.out.println(corso);
+		}
+		System.out.println("----------------------");
 	}
 
 	@AfterAll

@@ -105,7 +105,7 @@
 								$('#dp1').datepicker({
 									format : 'dd/mm/yyyy',
 									autoclose : true,
-									startDate : '01/01/1900',
+									startDate : new Date(),
 									endDate : '31/12/2050'
 								}).on('changeDate');
 							});

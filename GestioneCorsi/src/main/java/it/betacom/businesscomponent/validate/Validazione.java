@@ -64,7 +64,7 @@ public class Validazione {
 
 			int anno = calFine.get(Calendar.YEAR) - calInizio.get(Calendar.YEAR);
 			int giorni = calFine.get(Calendar.DAY_OF_YEAR) - calInizio.get(Calendar.DAY_OF_YEAR);
-			if (anno != 0 || giorni >= 0)
+			if (anno != 0 || giorni >= 2)
 				return true;
 		}
 		return false;
