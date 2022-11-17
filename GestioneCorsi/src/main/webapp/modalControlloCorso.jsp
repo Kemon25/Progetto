@@ -28,21 +28,21 @@
 
 						
 						<div class="form-group">
-							<label class="col-md-2 control-label" style=" text-align: left;">Corso</label>
+							<label class="col-md-2 control-label" style=" text-align: left;">Docente</label>
 							<div class="col-md-9 inputGroupContainer">
 								<div class="input-group">
 
 									<div class="btn-group">
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown">
-											scegli i corsi a cui iscriverti <span class="caret"></span>
+											scegli i docenti per il corso <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
 											<%
 								for (Docente d : AdminFacade.getInstance().getAll()) {
 								%>
 								<li><input type="radio" name="idDocente"
-									id="idDocente" value=<%=d.getId()%>>&nbsp;<%=d.getNome()%></li>
+									id="idDocente" value=<%=d.getId()%> required="required">&nbsp;<%=d.getNome()%></li>
 								<%
 								}
 								%>
@@ -82,7 +82,7 @@
 								$('#dp').datepicker({
 									format : 'dd/mm/yyyy',
 									autoclose : true,
-									startDate : '01/01/1900',
+									startDate : new Date(),
 									endDate : '31/12/2050'
 								}).on('changeDate');
 							});
