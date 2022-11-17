@@ -53,6 +53,8 @@
 			data-target="#myModal">Creazione corsista</button>
 	</div>
 
+	<jsp:include page="modalControlloCorso.jsp" />
+	
 	<div class="btn-group">
 		<form action="statistiche.jsp">
 			<button type="submit" class="btn btn-default">Mostra
@@ -66,8 +68,7 @@
 				corso</button>
 		</form>
 	</div>
-
-
+	
 	<div class="modal fade" id="myModal">
 		<div class="modal-dialog">
 			<form action="<%=application.getContextPath()%>/controlloCorsista"
@@ -116,8 +117,8 @@
 							<label class="col-md-5 control-label">Precedenti formativi</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=1>Si
-									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=0>No
+									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=1> Si
+									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=0> No
 								</div>
 							</div>
 						</div>
@@ -148,31 +149,15 @@
 							</div>
 
 						</div>
-
-
-
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-default">Crea
-								corsista</button>
+							<button type="submit" class="btn btn-default">Crea corsista</button>
 							<button type="submit" class="btn btn-default"
 								data-dismiss="modal">Annulla</button>
 						</div>
 					</div>
 				</div>
 			</form>
-
 		</div>
-
 	</div>
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
