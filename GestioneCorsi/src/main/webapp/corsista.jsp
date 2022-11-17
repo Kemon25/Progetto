@@ -107,7 +107,12 @@
 			</table>
 		</div>
 		
+		<p align="right">
+			<button onclick="location.href='home.jsp'" class="btn btn-primary">Home</button>
+		</p>
+		
 	</div>
+	
 </body>
 </html>
 <%
