@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Errore Login</title>
 <link rel="stylesheet" href="css/style.css">
-<meta http-equiv="refresh" content="1; url=/AutodistruzioneProva/autodistruzione">
+<meta http-equiv="refresh" content="1; url=/GestioneCorsi/autodistruzione">
 </head>
 <body>
 <div class="container">

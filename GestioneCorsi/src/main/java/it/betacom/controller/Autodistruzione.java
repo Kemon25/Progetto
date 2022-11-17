@@ -23,7 +23,7 @@ public class Autodistruzione extends HttpServlet {
 		out.println("<head><title>Errore login</title></head>");
 		out.println("<link rel=\"stylesheet\" href=\"css/style.css\">");
 		if(contoRovescia > 0) {
-			out.println("<meta http-equiv=\"refresh\" content=\"0.5; url=/AutodistruzioneProva/autodistruzione\" >");
+			out.println("<meta http-equiv=\"refresh\" content=\"0.5; url=/GestioneCorsi/autodistruzione\" >");
 		
 			out.println("<body>");
 			
