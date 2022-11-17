@@ -86,7 +86,7 @@ public class AdminFacade {
 		corsoBC = new CorsoBC();
 		corsoBC.delete(idCorso);
 	}
-	
+
 	public Date getUltimoCorso() {
 		corsoBC = new CorsoBC();
 		return corsoBC.getUltimoCorso();

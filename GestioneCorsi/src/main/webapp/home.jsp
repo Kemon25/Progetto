@@ -113,25 +113,24 @@
 
 
 						<div class="form-group">
-							<label class="col-md-5 control-label">Precedenti
-								formativi</label>
+							<label class="col-md-5 control-label">Precedenti formativi</label>
 							<div class="col-md-4">
 								<div class="input-group">
-									<input type="radio" name="Precedenti formativi" value=1>Si
-									<input type="radio" name="Precedenti formativi" value=0>No
+									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=1>Si
+									<input type="radio" name="PrecedentiFormativi" id="precedentiFOrmativi" value=0>No
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-5 control-label pull-left">nomeCorsista</label>
+							<label class="col-md-5 control-label pull-left">Corso</label>
 							<div class="col-md-4 inputGroupContainer">
 								<div class="input-group">
 
 									<div class="btn-group">
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown">
-											Scegli corso <span class="caret"></span>
+											secgli i corsi a cui iscriverti <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
 										<% 
