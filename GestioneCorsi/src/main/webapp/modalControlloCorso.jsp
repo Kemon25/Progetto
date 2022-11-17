@@ -82,7 +82,7 @@
 								$('#dp').datepicker({
 									format : 'dd/mm/yyyy',
 									autoclose : true,
-									startDate : new Date(),
+									startDate : '+1d',
 									endDate : '31/12/2050'
 								}).on('changeDate');
 							});
@@ -105,7 +105,7 @@
 								$('#dp1').datepicker({
 									format : 'dd/mm/yyyy',
 									autoclose : true,
-									startDate : new Date(),
+									startDate : '+3d',
 									endDate : '31/12/2050'
 								}).on('changeDate');
 							});
