@@ -46,7 +46,13 @@ public class Validazione {
 	}
 
 	public boolean nomeCorso(String nome) {
-		return vStringa(nome);
+		String expression = "^[a-zA-Z $&+,:;=\\\\\\\\?@#|/'<>.^*()%!-]+";
+		if ((nome != null) && (nome.length() <= 30)) {
+			if (nome.matches(expression)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public boolean dateCorso(Date inizio, Date fine) {
