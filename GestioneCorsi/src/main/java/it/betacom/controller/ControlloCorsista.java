@@ -25,7 +25,7 @@ public class ControlloCorsista extends HttpServlet {
 		
 		if(cors != null) {
 			idCorsista=cors.getId();
-				for(int i=0;i<AdminFacade.getInstance().getCorsiIscrivibili().size();i++){
+				for(int i=1;i<=AdminFacade.getInstance().getCorsiIscrivibili().size();i++){
 					if(request.getAttribute("idCorso"+i)!=null) {
 						System.out.println("idCorso"+i);
 						idCorso=Long.parseLong((String) request.getAttribute("idCorso"+i));
@@ -36,9 +36,9 @@ public class ControlloCorsista extends HttpServlet {
 						AdminFacade.getInstance().create(corsoCorsista);
 					}
 				}
-				request.setAttribute("idCorsista", Long.valueOf(idCorsista));
-				response.sendRedirect("listaCorsisti.jsp");
 				
+				request.setAttribute("idCorsista", Long.valueOf(idCorsista));
+				request.getRequestDispatcher("listaCorsisti.jsp").forward(request, response);
 			
 			}else {
 				request.setAttribute("errore", 2);

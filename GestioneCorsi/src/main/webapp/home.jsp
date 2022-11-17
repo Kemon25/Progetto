@@ -129,8 +129,8 @@ if (session.getAttribute("username") == null) {
 										</button>
 										<ul class="dropdown-menu" role="menu">
 											<%
-											for (Corso c : AdminFacade.getInstance().getCorsiIscrivibili()) {
 												int i = 0;
+											for (Corso c : AdminFacade.getInstance().getCorsiIscrivibili()) {
 												i++;
 											%>
 											<li><input type="checkbox" name="idCorso"
