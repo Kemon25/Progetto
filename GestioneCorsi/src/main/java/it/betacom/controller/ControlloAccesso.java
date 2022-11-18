@@ -42,18 +42,14 @@ public class ControlloAccesso extends HttpServlet {
 			}
 
 			if (hitCount < 4) {
-
-				System.out.println("dentro contatore " + hitCount);
 				hitCount++;
 				response.sendRedirect("index.jsp?hitCount="+hitCount);
 				
 			} else if (hitCount >= 4) {
-				System.out.println("fine contatore " + hitCount);
 				response.sendRedirect("errorLogin.jsp");
 				hitCount = 0;
 				session.invalidate();
 			}
 		}
 	}
-
 }

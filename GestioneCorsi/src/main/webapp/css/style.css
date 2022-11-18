@@ -30,21 +30,17 @@ a:link {
   color: #ffff00;
 }
 
-
-a:visited {
-  color: green;
+a, a:visited, a:active {
+  color: inherit;
 }
 
-
-a:hover {
-  color: hotpink;
-}
-
-
-a:active {
-  color: blue;
-}
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #10416b;
 }
+
+ul.nav a:hover {
+	background-color: #10416b;
+}
+
+

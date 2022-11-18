@@ -1,16 +1,13 @@
 <%
 Cookie[] cookies = request.getCookies();
 if (session.getAttribute("username") != null) {
-	System.out.println("1");
 	response.sendRedirect("home.jsp");
 } else if (cookies!= null) {
 	if(cookies.length > 0){
-	System.out.println("2");
 	session.setAttribute("username", cookies[0]);
 	response.sendRedirect("home.jsp");
 	}
 } else {
-	System.out.println("3");
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -31,7 +28,7 @@ if (session.getAttribute("username") != null) {
 		
 		<div>
 		<%
-			if(request.getParameter("hitCount") != null && 5  - (Integer.parseInt(request.getParameter("hitCount"))) != 5) {
+			if(request.getParameter("hitCount") != null && (Integer.parseInt(request.getParameter("hitCount"))) > 0) {
 		%>
 			<p style="color:red;">
 				tentativi di accesso rimanenti: <strong> <%=5  - (Integer.parseInt(request.getParameter("hitCount")))%>

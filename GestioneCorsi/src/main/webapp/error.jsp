@@ -15,7 +15,7 @@ int num = rand2.nextInt(3) + 1;
 <link rel="stylesheet" href="css/style.css">
 <title>Error page</title>
 </head>
-<body class="index noScrollbar">
+<body class="index">
 
 <div class="container">
 		<div class="page-header">
