@@ -31,6 +31,7 @@ public class ControlloAccesso extends HttpServlet {
 			Cookie cookie = new Cookie("username", username);
 			cookie.setMaxAge(5000);
 			response.addCookie(cookie);
+			hitCount = 0;
 			response.sendRedirect("home.jsp");
 
 		} else {

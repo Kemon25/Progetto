@@ -31,7 +31,7 @@ if (session.getAttribute("username") != null) {
 		
 		<div>
 			<p>
-				tentativi di accesso rimanenti: <strong> <%=5%>
+				tentativi di accesso rimanenti: <strong> <%=5 - ((int) session.getAttribute("hitCount"))%>
 				</strong>
 			</p>
 		</div>

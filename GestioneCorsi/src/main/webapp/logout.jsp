@@ -1,5 +1,4 @@
 <%
-if (session.getAttribute("username") != null) {
 	Cookie[] cookies = request.getCookies();
 	for (Cookie cookie : cookies) {
 	    cookie.setValue("");
@@ -8,7 +7,4 @@ if (session.getAttribute("username") != null) {
 	}
 	session.invalidate();
 	response.sendRedirect("index.jsp");
-	} else {
-	response.sendRedirect("index.jsp");
-}
 %>
