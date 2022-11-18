@@ -22,9 +22,10 @@ if (session.getAttribute("username") == null) {
 	<jsp:include page="nav.jsp" />
 
 	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
+	<h1 class="Elenco">Elenco dei Corsisti</h1>
+		<table class="table table" id="rigata">	
+			<thead>			
+				<tr class="roba">
 					<th>Nome</th>
 					<th>Cognome</th>
 					<th>Precedenti formativi</th>
@@ -55,7 +56,7 @@ if (session.getAttribute("username") == null) {
 	</div>
 
 	<div class="btn-group">
-		<button type="button" class="btn btn-default" data-toggle="modal"
+		<button type="button" class="btn btn-1" data-toggle="modal"
 			data-target="#myModal">Creazione corsista</button>
 	</div>
 
@@ -158,13 +159,13 @@ if (session.getAttribute("username") == null) {
 		
 	<div class="btn-group">
 		<form action="statistiche.jsp">
-			<button type="submit" class="btn btn-default">Mostra statistiche</button>
+			<button type="submit" class="btn btn-3">Mostra statistiche</button>
 		</form>
 	</div>
 
 	<div class="btn-group">
 		<form action="corsiDisponibili.jsp">
-			<button type="submit" class="btn btn-default">Elimina un corso</button>
+			<button type="submit" class="btn btn-4">Elimina un corso</button>
 		</form>
 	</div>
 </body>

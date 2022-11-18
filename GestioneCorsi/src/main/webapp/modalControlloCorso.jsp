@@ -11,7 +11,7 @@
 <body>
 
 	<div class="btn-group">
-		<button type="button" class="btn btn-default" data-toggle="modal"
+		<button type="button" class="btn btn-2" data-toggle="modal"
 			data-target="#myModal2">Creazione corso</button>
 	</div>
 
