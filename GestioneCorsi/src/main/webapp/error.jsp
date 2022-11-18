@@ -5,7 +5,7 @@
 <% 
 Random rand = new Random();
 Random rand2 = new Random();
-
+int num = rand2.nextInt(3) + 1;
 %>
 <!DOCTYPE html>
 <html>
@@ -30,24 +30,28 @@ Random rand2 = new Random();
 			</div>
 			<div class="panel-body">
 			<%
-				if(rand2.nextInt(2) + 1 == 1){
+				if(num == 1){
+			%>
+				<p>
+					<img src="img/<%= rand.nextInt(13) + 1 %>.png" alt="meme" height="400" width="auto">
+				</p>
+			<%
+				}else if (num == 2){
+			%>
+				<p>
+					<img src="gif/<%= rand.nextInt(6) + 1 %>.gif" alt="meme" height="400" width="auto">
+				</p>
+			<%
+				}else if (num == 3){
 			%>
 				<p>
 					<img src="img/<%= rand.nextInt(12) + 1 %>.png" alt="meme" height="400" width="auto">
 				</p>
 			<%
-				}else {
-			%>
-				<p>
-					<img src="gif/<%= rand.nextInt(12) + 1 %>.gif" alt="meme" height="400" width="auto">
-				</p>
-			<%
 				}
 			%>
 				<div class="btn-group">
-					<p align="right">
-						<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
-					</p>
+					<button onclick="window.history.back()" class="btn btn-default">Indietro</button>	
 				</div>
 				
 				<div class="btn-group">
