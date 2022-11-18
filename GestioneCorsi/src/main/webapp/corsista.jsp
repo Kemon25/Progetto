@@ -6,7 +6,7 @@
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
 <%@page import="it.betacom.businesscomponent.model.Corsista"%>
 <%
-	if (session.getAttribute("admin") != null)
+	if (session.getAttribute("username") == null)
 		response.sendRedirect("index.jsp");
 	else {
 %>

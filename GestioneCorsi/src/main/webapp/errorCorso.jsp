@@ -9,14 +9,21 @@
 </head>
 <body>
 <div class="container">
-		<header class="page-header">
-			<h1>Pagina di errore</h1>
-		</header>
-		
-		<h2>Impossibile creare il Corso!</h2>
-		<p align="right">
-			<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
-		</p>
+		<div class="page-header">
+			<h3>Errore nella validazione</h3>
+		</div>
+		<div class="panel panel-warning">
+			<header class="panel-heading">
+				<h4>Errore nel inserimento dati</h4>
+			</header>
+			<div class="panel-body">
+				<p>
+					Validazione Corso non riuscita
+				<p align="right">
+					<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
+				</p>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -33,7 +33,7 @@ int num = rand2.nextInt(3) + 1;
 				if(num == 1){
 			%>
 				<p>
-					<img src="img/<%= rand.nextInt(13) + 1 %>.png" alt="meme" height="400" width="auto">
+					<img src="img/<%= rand.nextInt(14) + 1 %>.png" alt="meme" height="400" width="auto">
 				</p>
 			<%
 				}else if (num == 2){

@@ -3,6 +3,11 @@
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
 <%@page import="it.betacom.businesscomponent.model.Corso"%>
 <%@page import="java.util.ArrayList"%>
+<%
+if (session.getAttribute("username") == null) {
+	response.sendRedirect("index.jsp");
+} else {
+%>
 <html>
 <head>
 <%@ include file="CDN.html"%>
@@ -62,10 +67,14 @@
 					%>
 				</tbody>
 			</table>
+			<p align="right">
+				<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
+			</p>
 		</div>
 	</div>
-	<p align="right">
-			<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
-	</p>
+	
 </body>
 </html>
+<%
+}
+%>

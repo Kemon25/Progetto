@@ -80,11 +80,12 @@
 				%>
 			</tbody>
 		</table>
-	</div>
-</div>
 		<p align="right">
 			<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
 		</p>
+	</div>
+</div>
+		
 </body>
 </html>
 <%
