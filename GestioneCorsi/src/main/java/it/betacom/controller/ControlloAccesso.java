@@ -16,7 +16,7 @@ import it.betacom.businesscomponent.facade.AdminFacade;
 public class ControlloAccesso extends HttpServlet {
 
 	private static final long serialVersionUID = -6441545525722074841L;
-	private int hitCount = 1;
+	private int hitCount = 0;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -41,13 +41,13 @@ public class ControlloAccesso extends HttpServlet {
 				response.addCookie(cookie);
 			}
 
-			if (hitCount < 5) {
+			if (hitCount <= 5) {
 
 				System.out.println("dentro contatore " + hitCount);
 				hitCount++;
 				response.sendRedirect("index.jsp?hitCount="+hitCount);
 				
-			} else if (hitCount >= 5) {
+			} else if (hitCount > 5) {
 				System.out.println("fine contatore " + hitCount);
 				response.sendRedirect("errorLogin.jsp");
 				hitCount = 0;

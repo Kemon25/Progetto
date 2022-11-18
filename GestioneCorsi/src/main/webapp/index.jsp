@@ -34,7 +34,7 @@ if (session.getAttribute("username") != null) {
 			if(request.getParameter("hitCount") != null) {
 		%>
 			<p>
-				tentativi di accesso rimanenti: <strong> <%=5  - (Integer.parseInt(request.getParameter("hitCount")))%>
+				tentativi di accesso rimanenti: <strong> <%=6  - (Integer.parseInt(request.getParameter("hitCount")))%>
 				</strong>
 			</p>
 		<%
