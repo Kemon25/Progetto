@@ -15,24 +15,24 @@ int num = rand2.nextInt(3) + 1;
 <link rel="stylesheet" href="css/style.css">
 <title>Error page</title>
 </head>
-<body>
+<body class="index noScrollbar">
 
 <div class="container">
 		<div class="page-header">
-			<h3>Non sei stato fortunato</h3>
+			<h3 id="colorLabel">Non sei stato fortunato</h3>
 		</div>
 		
 		
 		
 		<div class="panel panel-warning">
 			<div class="panel-heading">
-				<h4>Ecco un meme per rallegrarti</h4>
+				<h4 >Ecco un meme per rallegrarti</h4>
 			</div>
 			<div class="panel-body">
 			<%
 				if(num == 1){
 			%>
-				<p>
+				<p >
 					<img src="img/<%= rand.nextInt(14) + 1 %>.png" alt="meme" height="400" width="auto">
 				</p>
 			<%

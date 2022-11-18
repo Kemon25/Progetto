@@ -21,33 +21,33 @@
 <title>Dati Corsista</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="index noScrolbar">
 	<jsp:include page="nav.jsp" />
 	<div class="container">
 		<header class="page-header">
-			<h3>Dati del corsista</h3>
+			<h3 id="colorLabel">Dati del corsista</h3>
 		</header>
-		<div>
+		<div id="colorLabel">
 		<%
 			long id = Long.valueOf(request.getParameter("idCorsista"));
 			Corsista corsista = new Corsista();
 			corsista = AdminFacade.getInstance().getByIdCorsista(id);
 		%>
-		<p>
+		<p id="colorLabel">
 			Nome: 
 			<strong> 
 				<%=corsista.getNome()%>
 			</strong>
 		</p>
 		<br>
-		<p>
+		<p id="colorLabel">
 			Cognome: 
 			<strong> 
 				<%=corsista.getCognome()%>
 			</strong>
 		</p>
 		<br>
-		<p>
+		<p id="colorLabel">
 			Precedenti formativi: 
 			<strong>
 			<%
@@ -67,19 +67,19 @@
 		</div>
 		
 		<header class="page-header">
-			<h3>Corsi tenuti da <%=corsista.getNome()%></h3>
+			<h3 id="colorLabel">Corsi tenuti da <%=corsista.getNome()%></h3>
 		</header>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Corso</th>
-						<th>Docente</th>
-						<th>Data Inizio</th>
-						<th>Data Fine</th>
-						<th>Costo</th>
-						<th>Commenti</th>
-						<th>Aula</th>
+						<th id="colorLabel">Corso</th>
+						<th id="colorLabel">Docente</th>
+						<th id="colorLabel">Data Inizio</th>
+						<th id="colorLabel">Data Fine</th>
+						<th id="colorLabel">Costo</th>
+						<th id="colorLabel">Commenti</th>
+						<th id="colorLabel">Aula</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -92,13 +92,13 @@
 							docente = AdminFacade.getInstance().getById(corso.getIdDocente());
 					%>
 					<tr>
-						<td><%=corso.getNomeCorso()%></td>
-						<td><%=docente.getNome()%></td>
-						<td><%=df.format(corso.getDataInizio())%></td>
-						<td><%=df.format(corso.getDataFine())%></td>
-						<td><%=String.format("%.2f", corso.getCosto())%></td>
-						<td><%=corso.getCommenti()%></td>
-						<td><%=corso.getAula()%></td>
+						<td id="colorLabel"><%=corso.getNomeCorso()%></td>
+						<td id="colorLabel"><%=docente.getNome()%></td>
+						<td id="colorLabel"><%=df.format(corso.getDataInizio())%></td>
+						<td id="colorLabel"><%=df.format(corso.getDataFine())%></td>
+						<td id="colorLabel"><%=String.format("%.2f", corso.getCosto())%></td>
+						<td id="colorLabel"><%=corso.getCommenti()%></td>
+						<td id="colorLabel"><%=corso.getAula()%></td>
 					</tr>
 					<%
 						}

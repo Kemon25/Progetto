@@ -3,14 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="css/style.css">
 <%@ include file="CDN.html"%>
 <meta charset="ISO-8859-1">
 <title>Error Corso</title>
 </head>
-<body>
+<body class="index noScrollbarr">
 <div class="container">
 		<div class="page-header">
-			<h3>Errore nella validazione</h3>
+			<h3 id="colorLabel">Errore nella validazione</h3>
 		</div>
 		<div class="panel panel-warning">
 			<header class="panel-heading">

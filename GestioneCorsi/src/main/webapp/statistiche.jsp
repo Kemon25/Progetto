@@ -20,15 +20,15 @@ else {
 <title>Statistiche</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="index">
 	<jsp:include page="nav.jsp" />
 	<div class="container">
-		<header class="page-header">
+		<header class="page-header" id="colorHeader">
 			<h3>Statistiche dei Corsi</h3>
 		</header>
 
 
-		<div>
+		<div id="colorLabel">
 			<p>
 				Numero corsisti totali: <strong> <%=AdminFacade.getInstance().getAllCorsista().size()%>
 				</strong>
@@ -39,7 +39,7 @@ else {
 		<%
 		for (Corso c : AdminFacade.getInstance().getCorsoMaxFreq()) {
 		%>
-		<div>
+		<div id="colorLabel">
 
 			<p>
 				Il corso pi&ugrave; frequentato &egrave;: <strong> <%=c.getNomeCorso()%>
@@ -54,21 +54,21 @@ else {
 		<%
 		DateFormat formato = new SimpleDateFormat("dd-MMM-yyyy");
 		%>
-		<div>
+		<div id="colorLabel">
 			<p>
 				Da inizio dell'ultimo corso: <strong> <%=formato.format(AdminFacade.getInstance().getUltimoCorso())%>
 				</strong>
 			</p>
 		</div>
 
-		<div>
+		<div id="colorLabel">
 			<p>
 				Durata media dei corsi: <strong> <%=AdminFacade.getInstance().getMediaCorsi()%>
 				</strong>&nbsp;giorni
 			</p>
 		</div>
 
-		<div>
+		<div id="colorLabel">
 			<p>
 				Fra i vari corsi ci sono: <strong> <%=AdminFacade.getInstance().getNumCommenti()%>
 				</strong>&nbsp;commenti
@@ -76,13 +76,13 @@ else {
 		</div>
 
 		<div class="table-responsive">
-			<h3>Elenco Corsisti</h3>
+			<h3 id="colorLabel">Elenco Corsisti</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Precedenti Formativi</th>
+						<th id="colorLabel">Nome</th>
+						<th id="colorLabel">Cognome</th>
+						<th id="colorLabel">Precedenti Formativi</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -95,9 +95,9 @@ else {
 							precedenti = "Si";
 					%>
 					<tr>
-						<td><a href="corsista.jsp?idCorsista=<%=c.getId()%>"><%=c.getNome()%></a></td>
-						<td><%=c.getCognome()%></td>
-						<td><%=precedenti%></td>
+						<td id="colorLabel"><a href="corsista.jsp?idCorsista=<%=c.getId()%>"><%=c.getNome()%></a></td>
+						<td id="colorLabel"><%=c.getCognome()%></td>
+						<td id="colorLabel"><%=precedenti%></td>
 					</tr>
 					<%
 					}
@@ -109,12 +109,12 @@ else {
 
 
 		<div class="table-responsive">
-			<h3>Elenco corsi disponibili</h3>
+			<h3 id="colorLabel">Elenco corsi disponibili</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Nome</th>
-						<th>Aula</th>
+						<th id="colorLabel">Nome</th>
+						<th id="colorLabel">Aula</th>
 
 					</tr>
 				</thead>
@@ -124,8 +124,8 @@ else {
 						String precedenti = new String();
 					%>
 					<tr>
-						<td><%=c.getNomeCorso()%></td>
-						<td><%=c.getAula()%></td>
+						<td id="colorLabel"><%=c.getNomeCorso()%></td>
+						<td id="colorLabel"><%=c.getAula()%></td>
 					</tr>
 					<%
 					}
@@ -138,13 +138,13 @@ else {
 
 		<div class="table-responsive">
 
-			<h3>Elenco docenti che tengono pi&ugrave; di un corso</h3>
+			<h3 id="colorLabel">Elenco docenti che tengono pi&ugrave; di un corso</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Cv</th>
+						<th id="colorLabel">Nome</th>
+						<th id="colorLabel">Cognome</th>
+						<th id="colorLabel">Cv</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -153,9 +153,9 @@ else {
 						String precedenti = new String();
 					%>
 					<tr>
-						<td><%=d.getNome()%></td>
-						<td><%=d.getCognome()%></td>
-						<td><%=d.getCv()%></td>
+						<td id="colorLabel"><%=d.getNome()%></td>
+						<td id="colorLabel"><%=d.getCognome()%></td>
+						<td id="colorLabel"><%=d.getCv()%></td>
 					</tr>
 					<%
 					}

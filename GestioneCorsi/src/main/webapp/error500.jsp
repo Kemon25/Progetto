@@ -9,10 +9,10 @@
 	href="/<%=application.getServletContextName()%>/css/style.css">
 <title>Error 500</title>
 </head>
-<body>
+<body class="index noScrollbar">
 	<div class="container">
 		<div class="page-header">
-			<h3>500 Internal Server Error</h3>
+			<h3 id="colorLabel">500 Internal Server Error</h3>
 		</div>
 		<div class="panel panel-warning">
 			<header class="panel-heading">

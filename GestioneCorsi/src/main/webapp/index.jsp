@@ -22,10 +22,10 @@ if (session.getAttribute("username") != null) {
 <title>Login</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="index">
+<body class="index noScrollbar">
 	<div class="container">
 		<header class="page-header" id="whiteHeader">
-			<h3>Inserire i dati d'accesso</h3>
+			<h3 id="colorLabel">Inserire i dati d'accesso</h3>
 		</header>
 
 		
@@ -47,7 +47,7 @@ if (session.getAttribute("username") != null) {
 			action="/<%=application.getServletContextName()%>/controlloAccesso"
 			method="post" class="form-horizontal">
 			<div class="form-group">
-				<label class="col-md-1 control-label" id="whiteLabel" >Username</label>
+				<label class="col-md-1 control-label"  id="colorLabel">Username</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"> <i
@@ -58,7 +58,7 @@ if (session.getAttribute("username") != null) {
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-md-1 control-label" id="whiteLabel">Password</label>
+				<label class="col-md-1 control-label" id="colorLabel" >Password</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"> <i
@@ -70,7 +70,7 @@ if (session.getAttribute("username") != null) {
 			</div>
 
 			<div class="row">
-				<div class="col-md4 col-md-offset-1">
+				<div class="col-md4 col-md-offset-1" >
 					<button type="submit" class="btn btn-warning">
 						Login&nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span>
 					</button>
