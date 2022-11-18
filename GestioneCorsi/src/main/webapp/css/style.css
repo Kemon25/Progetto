@@ -3,13 +3,9 @@ html {
 	min-height: 100%;
 }
 
-body{
-	overflow: hidden;
-}
-
-
 .index{
 	background-image:url("../img/spazioLogin.jpg");
+	overflow: hidden;
 }
 
 .form{
@@ -24,9 +20,6 @@ body{
 .control-label{
 	color:white;
 }
-
-
-
 
 
 ::-webkit-scrollbar{

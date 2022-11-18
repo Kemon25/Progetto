@@ -4,7 +4,7 @@ if (session.getAttribute("username") != null) {
 	System.out.println("1");
 	response.sendRedirect("home.jsp");
 } else if (cookies!= null) {
-	if(cookies.length >0){
+	if(cookies.length > 0){
 	System.out.println("2");
 	session.setAttribute("username", cookies[0]);
 	response.sendRedirect("home.jsp");
@@ -22,7 +22,7 @@ if (session.getAttribute("username") != null) {
 <title>Login</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="index">
 	<div class="container">
 		<header class="page-header">
 			<h3>Inserire i dati d'accesso</h3>
@@ -33,7 +33,7 @@ if (session.getAttribute("username") != null) {
 		<%
 			if(request.getParameter("hitCount") != null && 6  - (Integer.parseInt(request.getParameter("hitCount"))) != 5) {
 		%>
-			<p>
+			<p style="color:red;">
 				tentativi di accesso rimanenti: <strong> <%=6  - (Integer.parseInt(request.getParameter("hitCount")))%>
 				</strong>
 			</p>
@@ -79,6 +79,8 @@ if (session.getAttribute("username") != null) {
 			</div>
 		</form>
 	</div>
+	<img  src="img/razzoLogin.png" align="right">
+	
 </body>
 </html>
 <%
