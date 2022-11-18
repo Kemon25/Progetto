@@ -31,10 +31,10 @@ if (session.getAttribute("username") != null) {
 		
 		<div>
 		<%
-			if(request.getParameter("hitCount") != null && 6  - (Integer.parseInt(request.getParameter("hitCount"))) != 5) {
+			if(request.getParameter("hitCount") != null && 5  - (Integer.parseInt(request.getParameter("hitCount"))) != 5) {
 		%>
 			<p style="color:red;">
-				tentativi di accesso rimanenti: <strong> <%=6  - (Integer.parseInt(request.getParameter("hitCount")))%>
+				tentativi di accesso rimanenti: <strong> <%=5  - (Integer.parseInt(request.getParameter("hitCount")))%>
 				</strong>
 			</p>
 		<%
