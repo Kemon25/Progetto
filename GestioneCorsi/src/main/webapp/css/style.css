@@ -13,11 +13,11 @@ html {
 	
 }
 
-.page-header{
+#whiteHeader {
 	color:white;
 }
 
-.control-label{
+#whiteLabel{
 	color:white;
 }
 
