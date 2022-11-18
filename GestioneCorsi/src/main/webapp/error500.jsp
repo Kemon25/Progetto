@@ -20,10 +20,9 @@
 			</header>
 			<div class="panel-body">
 				<p>Torna alla Home</p>
-				<p>
-					<input type="button" class="btn btn-default" value="Indietro"
-						onclick="window.history.back()" />
-				<p>
+				<p align="right">
+					<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
+				</p>
 			</div>
 		</div>
 	</div>

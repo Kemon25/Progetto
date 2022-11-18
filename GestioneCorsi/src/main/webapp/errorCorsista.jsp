@@ -14,8 +14,9 @@
 		</header>
 		
 		<h2>Impossibile creare il Corsista!</h2>
-		<button onclick="location.href='home.jsp'" class="btn btn-primary">Home</button>
-		
+		<p align="right">
+			<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
+		</p>
 	</div>
 </body>
 </html>

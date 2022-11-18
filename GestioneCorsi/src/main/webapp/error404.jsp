@@ -23,10 +23,9 @@
 				<p>
 					Per segnalare un eventuale problema:&nbsp; <a
 						href="mailto:betacom@tin.it">Contattare il supporto tecnico</a>
-				<p>
-					<input type="button" class="btn btn-default" value="Indietro"
-						onclick="window.history.back()" />
-				<p>
+				<p align="right">
+					<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
+				</p>
 			</div>
 		</div>
 	</div>

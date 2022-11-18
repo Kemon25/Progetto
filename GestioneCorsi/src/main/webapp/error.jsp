@@ -45,7 +45,9 @@ Random rand2 = new Random();
 				}
 			%>
 				<div class="btn-group">
-					<button onclick="window.history.back()" class="btn btn-default">Indietro</button>	
+					<p align="right">
+						<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
+					</p>
 				</div>
 				
 				<div class="btn-group">

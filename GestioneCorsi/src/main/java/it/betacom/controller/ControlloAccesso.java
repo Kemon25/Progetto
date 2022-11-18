@@ -16,7 +16,7 @@ import it.betacom.businesscomponent.facade.AdminFacade;
 public class ControlloAccesso extends HttpServlet {
 
 	private static final long serialVersionUID = -6441545525722074841L;
-	private int hitCount = 0;
+	private int hitCount = 1;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -82,13 +82,9 @@
 		</table>
 	</div>
 </div>
-<div class="col-md4 col-md-offset-1">
-	<form action="home.jsp"  >
-		<button type="submit" class="btn btn-warning">
-				Torna indietro&nbsp;&nbsp;
-		</button>
-	</form>
-</div>
+		<p align="right">
+			<button onclick="window.history.back()" class="btn btn-primary">Indietro</button>
+		</p>
 </body>
 </html>
 <%
