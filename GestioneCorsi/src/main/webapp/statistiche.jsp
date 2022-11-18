@@ -77,7 +77,7 @@ else {
 
 		<div class="table-responsive">
 			<h3 id="colorLabel">Elenco Corsisti</h3>
-			<table class="table table-hover">
+			<table class="table table-hover" id="rigata">
 				<thead>
 					<tr>
 						<th id="colorLabel">Nome</th>
@@ -110,7 +110,7 @@ else {
 
 		<div class="table-responsive">
 			<h3 id="colorLabel">Elenco corsi disponibili</h3>
-			<table class="table table-hover">
+			<table class="table table-hover" id="rigata">
 				<thead>
 					<tr>
 						<th id="colorLabel">Nome</th>
@@ -139,7 +139,7 @@ else {
 		<div class="table-responsive">
 
 			<h3 id="colorLabel">Elenco docenti che tengono pi&ugrave; di un corso</h3>
-			<table class="table table-hover">
+			<table class="table table-hover" id="rigata">
 				<thead>
 					<tr>
 						<th id="colorLabel">Nome</th>

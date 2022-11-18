@@ -11,20 +11,25 @@ if (session.getAttribute("username") == null) {
 <html>
 <head>
 <%@ include file="CDN.html"%>
+<style>
+td,th {
+	color: #fbd300;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Lista corsisti</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/validazione.js"></script>
 </head>
-<body>
+<body class="index">
 	<jsp:include page="nav.jsp" />
 	<div class="container">
 		<header class="page-header">
-			<h3>Lista corsisti</h3>
+			<h3 class="colorLabel">Lista corsisti</h3>
 		</header>
 
 		<div class="table-responsive">
-			<table class="table table-hover">
+			<table class="table table-hover" id="rigata">
 				<thead>
 					<tr>
 						<th>Nome</th>

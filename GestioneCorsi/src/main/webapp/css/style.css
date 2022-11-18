@@ -5,10 +5,11 @@ html {
 
 .index{
 	background-image:url("../img/spazioLogin.jpg");
-	overflow: hidden;
 }
 
-
+.noScrollBar{
+	overflow: hidden;
+}
 
 #colorHeader {
 	color:#fbd300;
@@ -20,7 +21,6 @@ html {
 
 .form{
 	text-align: center;
-	
 }
 
 a:link {
@@ -40,43 +40,30 @@ ul.nav a:hover {
 }
 
 .btn-1 {
-  background-image: linear-gradient(to right, #6643b5 0%, #6643b5, #8594e4 100%);
-  color : white;
+	background-color: #10416b;
+	color : white;
 }
 
 .btn-2 {
-  background-image: linear-gradient(to right, #142d4c 0%, #385170, #9fd3c7 100%);
+  background-color: #10416b;
   color : white;
 }
 
 .btn-3 {
-  background-image: linear-gradient(to right, #113f67 0%, #38598b, #a2a8d3 100%);
+  background-color: #10416b;
   color : white;
 }
 
 .btn-4 {
-  background-image: linear-gradient(to right, #27296d 0%, #5e63b6, #5e63b6 100%);
+  background-color: #10416b;
   color : white;
 }
 
 .form{
 	text-align: center;
-	
-}
-th {
-	border : solid;
-	border-color : #ff9a3c;
-	color : #ff9a3c;
-}
-
-
-td {
-	border : solid;
-	color : #fbd300;
 }
 
 #rigata{
-	color : #fbd300;
 	border: 1px solid;
 	border-style: solid;
 }

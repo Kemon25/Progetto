@@ -12,20 +12,25 @@ if (session.getAttribute("username") == null) {
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+td,th {
+	color: #fbd300;
+}
+</style>
 <%@ include file="CDN.html"%>
 <meta charset="ISO-8859-1">
 <title>Home</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="home">
+<body class="home index">
 	<jsp:include page="nav.jsp" />
-
+<div class="container">
 	<div class="table-responsive">
 	<h1 class="Elenco">Elenco dei Corsisti</h1>
-		<table class="table table" id="rigata">	
+		<table class="table table-hover" id="rigata">
 			<thead>			
-				<tr class="roba">
+				<tr>
 					<th>Nome</th>
 					<th>Cognome</th>
 					<th>Precedenti formativi</th>
@@ -73,10 +78,6 @@ if (session.getAttribute("username") == null) {
 					</div>
 					<div class="modal-body">
 
-
-
-
-
 						<div class="form-group">
 							<label class="col-md-4 control-label" style="text-align: left;">Nome</label>
 							<div class="col-md-8 inputGroupContainer">
@@ -102,7 +103,6 @@ if (session.getAttribute("username") == null) {
 							</div>
 
 						</div>
-
 
 						<div class="form-group">
 							<label class="col-md-4 control-label" style="text-align: left;">Precedenti formativi</label>
@@ -168,6 +168,7 @@ if (session.getAttribute("username") == null) {
 			<button type="submit" class="btn btn-4">Elimina un corso</button>
 		</form>
 	</div>
+</div>
 </body>
 </html>
 <%

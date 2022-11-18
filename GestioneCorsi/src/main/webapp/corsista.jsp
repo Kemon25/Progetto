@@ -21,7 +21,7 @@
 <title>Dati Corsista</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="index noScrolbar">
+<body class="index">
 	<jsp:include page="nav.jsp" />
 	<div class="container">
 		<header class="page-header">
@@ -67,10 +67,10 @@
 		</div>
 		
 		<header class="page-header">
-			<h3 id="colorLabel">Corsi tenuti da <%=corsista.getNome()%></h3>
+			<h3 id="colorLabel">Corsi seguiti da <%=corsista.getNome()%></h3>
 		</header>
 		<div class="table-responsive">
-			<table class="table table-hover">
+			<table class="table table-hover" id="rigata">
 				<thead>
 					<tr>
 						<th id="colorLabel">Corso</th>
