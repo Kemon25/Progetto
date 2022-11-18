@@ -83,7 +83,7 @@ if (session.getAttribute("username") == null) {
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-user"></i>
 									</span> <input type="text" name="nomeCorsista" id="nomeCorsista"
-										placeholder="Nome..." class="form-control" required>
+										placeholder="(max 30 caratteri, solo lettere)" class="form-control" required>
 								</div>
 							</div>
 
@@ -96,7 +96,7 @@ if (session.getAttribute("username") == null) {
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-user"></i>
 									</span> <input type="text" name="cognomeCorsista" id="cognomeCorsista"
-										placeholder="Cognome..." class="form-control" required>
+										placeholder="(max 30 caratteri, solo lettere)" class="form-control" required>
 								</div>
 							</div>
 

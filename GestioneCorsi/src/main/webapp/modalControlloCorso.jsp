@@ -60,7 +60,7 @@
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-text-width"></i>
 									</span> <input type="text" name="nomeCorso" id="nomeCorso"
-										placeholder="Nome corso..." class="form-control" required>
+										placeholder="max 30 caratteri, solo lettere" class="form-control" required>
 								</div>
 							</div>
 						</div>
@@ -101,6 +101,7 @@
 							</div>
 						</div>
 						<script>
+							
 							$(function() {
 								$('#dp1').datepicker({
 									format : 'dd/mm/yyyy',
@@ -131,7 +132,7 @@
 										class="glyphicon glyphicon-option-horizontal"></i>
 									</span>
 									<textarea rows="6" cols="60" name="commenti" id="commenti"
-										class="form-control" style="resize: none;" maxlength="500"></textarea>
+										placeholder="(max 200 caratteri)" class="form-control" style="resize: none;" maxlength="200"></textarea>
 								</div>
 							</div>
 						</div>
@@ -142,7 +143,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-home"></i>
-									</span> <input type="text" name="aula" id="aula" placeholder="Aula..."
+									</span> <input type="text" name="aula" id="aula" placeholder="(no caratteri speciali, max 4 caratteri)"
 										class="form-control" maxlength="4" required>
 								</div>
 							</div>
@@ -152,19 +153,12 @@
 					
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-default">Crea corso</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
 					</div>
 					</div>
 				</div>
-			</form>
-			
-		
+			</form>	
 		</div>
-		
 	</div>
-	
-
-
-
 </body>
 </html>
