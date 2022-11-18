@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.betacom.businesscomponent.AdminBC;
+import it.betacom.businesscomponent.facade.AdminFacade;
 
 @WebServlet("/controlloAccesso")
 public class ControlloAccesso extends HttpServlet {
@@ -25,8 +26,7 @@ public class ControlloAccesso extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 
-		AdminBC aBC = new AdminBC();
-		if (aBC.accesso(username, password)) {
+		if (AdminFacade.getInstance().accesso(username, password)) {
 			session.setAttribute("username", username);
 			Cookie cookie = new Cookie("username", username);
 			cookie.setMaxAge(5000);

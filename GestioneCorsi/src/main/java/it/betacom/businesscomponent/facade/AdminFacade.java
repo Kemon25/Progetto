@@ -34,9 +34,9 @@ public class AdminFacade {
 	}
 	
 	//---------------------------------AdminBC
-	public boolean accesso (Admin admin) {
+	public boolean accesso (String username,String password) {
 		adminBC = new AdminBC();
-		return adminBC.accesso(admin.getUsername(), admin.getPassword());
+		return adminBC.accesso(username, password);
 	}
 	public Admin getAdmin (String username) {
 		adminBC = new AdminBC();
