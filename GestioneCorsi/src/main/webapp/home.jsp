@@ -2,9 +2,7 @@
 <%@page import="it.betacom.businesscomponent.model.Corsista"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="it.betacom.businesscomponent.facade.AdminFacade"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 if (session.getAttribute("username") == null) {
 	response.sendRedirect("index.jsp");
@@ -20,8 +18,9 @@ if (session.getAttribute("username") == null) {
 <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="home">
 	<jsp:include page="nav.jsp" />
+
 	<div class="table-responsive">
 		<table class="table table-striped">
 			<thead>

@@ -3,7 +3,32 @@ html {
 	min-height: 100%;
 }
 
+body{
+	overflow: hidden;
+}
+
+
+.index{
+	background-image:url("../img/spazioLogin.jpg");
+}
+
+.form{
+	text-align: center;
+	
+}
+
+.page-header{
+	color:white;
+}
+
+.control-label{
+	color:white;
+}
+
+
+
+
+
 ::-webkit-scrollbar{
 	display: none;
 }
-
