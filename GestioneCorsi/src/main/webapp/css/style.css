@@ -44,3 +44,7 @@ a:hover {
 a:active {
   color: blue;
 }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #10416b;
+}
