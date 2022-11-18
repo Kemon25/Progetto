@@ -2,7 +2,11 @@
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isErrorPage="true"%>
-<% Random rand = new Random(); %>
+<% 
+Random rand = new Random();
+Random rand2 = new Random();
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +29,21 @@
 				<h4>Ecco un meme per rallegrarti</h4>
 			</div>
 			<div class="panel-body">
-	
+			<%
+				if(rand2.nextInt(2) + 1 == 1){
+			%>
 				<p>
 					<img src="img/<%= rand.nextInt(12) + 1 %>.png" alt="meme" height="400" width="auto">
 				</p>
-
+			<%
+				}else {
+			%>
+				<p>
+					<img src="gif/<%= rand.nextInt(12) + 1 %>.gif" alt="meme" height="400" width="auto">
+				</p>
+			<%
+				}
+			%>
 				<div class="btn-group">
 					<button onclick="window.history.back()" class="btn btn-default">Indietro</button>	
 				</div>
