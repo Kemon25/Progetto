@@ -124,7 +124,7 @@ if (session.getAttribute("username") == null) {
 									<div class="btn-group">
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown">
-											scegli i corsi a cui iscriverti <span class="caret"></span>
+											scegli il corso a cui iscrivere il corsista <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
 											<%
