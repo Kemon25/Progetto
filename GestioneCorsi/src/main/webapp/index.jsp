@@ -1,8 +1,13 @@
 <%
-
-if(session.getAttribute("username") != null)
+Cookie[] cookies = request.getCookies();
+if (session.getAttribute("username") != null) {
 	response.sendRedirect("home.jsp");
-else {
+} else if (cookies!= null) {
+	if(cookies.length >1){
+	session.setAttribute("username", cookies[0]);
+	response.sendRedirect("home.jsp");
+	}
+} else {
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -19,19 +24,23 @@ else {
 		<header class="page-header">
 			<h3>Inserire i dati d'accesso</h3>
 		</header>
-		
-		<%if(session.getAttribute("hitCount")!=null)
-			if((int) session.getAttribute("hitCount") >0){
-			%>
+
+		<%
+		if (session.getAttribute("hitCount") != null)
+			if ((int) session.getAttribute("hitCount") > 0) {
+		%>
 		<div>
-		<p>
-			tentativi di accesso rimanenti: <strong> <%= 5-((int)session.getAttribute("hitCount")) %>
-			</strong>
-		</p>
+			<p>
+				tentativi di accesso rimanenti: <strong> <%=5 - ((int) session.getAttribute("hitCount"))%>
+				</strong>
+			</p>
 		</div>
-		<%} %>
-		
-		<form action="/<%=application.getServletContextName()%>/controlloAccesso"
+		<%
+		}
+		%>
+
+		<form
+			action="/<%=application.getServletContextName()%>/controlloAccesso"
 			method="post" class="form-horizontal">
 			<div class="form-group">
 				<label class="col-md-1 control-label">Username</label>
@@ -61,11 +70,13 @@ else {
 					<button type="submit" class="btn btn-warning">
 						Login&nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span>
 					</button>
-					
+
 				</div>
 			</div>
 		</form>
 	</div>
 </body>
 </html>
-<% }%>
+<%
+}
+%>
