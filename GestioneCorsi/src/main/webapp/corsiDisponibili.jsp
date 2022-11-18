@@ -28,11 +28,11 @@
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+<body class="index">
 <jsp:include page="nav.jsp"/>
 <div class="container">
 	<header class="page-header">
-		<h3>Corsi disponibili</h3>
+		<h3 id="colorLabel">Corsi disponibili</h3>
 	</header>
 	
 	
@@ -41,12 +41,12 @@
 		
 			<thead>
 				<tr>
-					<th>Nome Corso</th>
-					<th>Docente</th>
-					<th>Data Inizio</th>
-					<th>Data Fine</th>
-					<th>Costo</th>
-					<th>Aula</th>
+					<th id="colorLabel">Nome Corso</th>
+					<th id="colorLabel">Docente</th>
+					<th id="colorLabel">Data Inizio</th>
+					<th id="colorLabel">Data Fine</th>
+					<th id="colorLabel">Costo</th>
+					<th id="colorLabel">Aula</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th></th>
@@ -58,14 +58,14 @@
 					for(Corso c : corsi) {
 				%>
 				<tr>				
-					<td><%= c.getNomeCorso()%></td>
-					<td><%= AdminFacade.getInstance().getById(c.getIdDocente()).getCognome() %></td>
+					<td id="colorLabel"><%= c.getNomeCorso()%></td>
+					<td id="colorLabel"><%= AdminFacade.getInstance().getById(c.getIdDocente()).getCognome() %></td>
 					
-					<td><%= df.format(c.getDataInizio()) %></td>
-					<td><%= df.format(c.getDataFine()) %></td>
+					<td id="colorLabel"><%= df.format(c.getDataInizio()) %></td>
+					<td id="colorLabel"><%= df.format(c.getDataFine()) %></td>
 					
-					<td><%= String.format("%.2f", c.getCosto()) %> &euro;</td>
-					<td><%= c.getAula()%></td>
+					<td id="colorLabel"><%= String.format("%.2f", c.getCosto()) %> &euro;</td>
+					<td id="colorLabel"><%= c.getAula()%></td>
 					<td>
 						<form action="/<%= application.getServletContextName() %>/rimuoviCorso?id=<%= c.getIdCorso() %>" method="post">
 							<button class="btn btn-danger btn-xs" type="submit">
