@@ -4,7 +4,10 @@ html {
 }
 
 .index{
-	background-image:url("../img/spazioLogin.jpg");
+	background-image:url("../img/spazioLogin.jpg");	
+}
+
+.noScrollbar{
 	overflow: hidden;
 }
 
@@ -13,15 +16,31 @@ html {
 	
 }
 
-#whiteHeader {
-	color:white;
+
+
+#colorHeader {
+	color:#fbd300;
 }
 
-#whiteLabel{
-	color:white;
+#colorLabel{
+	color:#fbd300;
+}
+
+a:link {
+  color: #ffff00;
 }
 
 
-::-webkit-scrollbar{
-	display: none;
+a:visited {
+  color: green;
+}
+
+
+a:hover {
+  color: hotpink;
+}
+
+
+a:active {
+  color: blue;
 }
