@@ -16,31 +16,44 @@ import it.betacom.businesscomponent.AdminBC;
 public class ControlloAccesso extends HttpServlet {
 
 	private static final long serialVersionUID = -6441545525722074841L;
-	private int hitCount = 1;
+	private int hitCount = 0;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
-		session.setAttribute("hitCount", Integer.valueOf(hitCount));
+		
 
 		AdminBC aBC = new AdminBC();
 		if (aBC.accesso(username, password)) {
 			session.setAttribute("username", username);
 			Cookie cookie = new Cookie("username", username);
+			cookie.setMaxAge(5000);
 			response.addCookie(cookie);
 			response.sendRedirect("home.jsp");
 
-		} else if (hitCount < 5) {
-			System.out.println("dentro contatotre " + hitCount);
-			response.sendRedirect("index.jsp");
-			hitCount++;
-		} else if (hitCount >= 5) {
-			System.out.println("fine contatotre " + hitCount);
-			response.sendRedirect("errorLogin.jsp");
-			hitCount = 0;
-			session.invalidate();
+		} else {
+			Cookie[] cookies = request.getCookies();
+
+			for (Cookie cookie : cookies) {
+				cookie.setValue("");
+				cookie.setMaxAge(0);
+				response.addCookie(cookie);
+			}
+
+			if (hitCount < 5) {
+
+				System.out.println("dentro contatore " + hitCount);
+				hitCount++;
+				response.sendRedirect("index.jsp?hitCount="+hitCount);
+				
+			} else if (hitCount >= 5) {
+				System.out.println("fine contatore " + hitCount);
+				response.sendRedirect("errorLogin.jsp");
+				hitCount = 0;
+				session.invalidate();
+			}
 		}
 	}
 

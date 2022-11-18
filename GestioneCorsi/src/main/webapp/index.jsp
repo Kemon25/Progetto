@@ -1,13 +1,16 @@
 <%
 Cookie[] cookies = request.getCookies();
 if (session.getAttribute("username") != null) {
+	System.out.println("1");
 	response.sendRedirect("home.jsp");
 } else if (cookies!= null) {
-	if(cookies.length >1){
+	if(cookies.length >0){
+	System.out.println("2");
 	session.setAttribute("username", cookies[0]);
 	response.sendRedirect("home.jsp");
 	}
 } else {
+	System.out.println("3");
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -25,19 +28,14 @@ if (session.getAttribute("username") != null) {
 			<h3>Inserire i dati d'accesso</h3>
 		</header>
 
-		<%
-		if (session.getAttribute("hitCount") != null)
-			if ((int) session.getAttribute("hitCount") > 0) {
-		%>
+		
 		<div>
 			<p>
-				tentativi di accesso rimanenti: <strong> <%=5 - ((int) session.getAttribute("hitCount"))%>
+				tentativi di accesso rimanenti: <strong> <%=5%>
 				</strong>
 			</p>
 		</div>
-		<%
-		}
-		%>
+		
 
 		<form
 			action="/<%=application.getServletContextName()%>/controlloAccesso"
