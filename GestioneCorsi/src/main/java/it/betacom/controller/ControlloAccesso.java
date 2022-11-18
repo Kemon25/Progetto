@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.betacom.businesscomponent.AdminBC;
 import it.betacom.businesscomponent.facade.AdminFacade;
 
 @WebServlet("/controlloAccesso")
@@ -25,13 +24,12 @@ public class ControlloAccesso extends HttpServlet {
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		
-
 		if (AdminFacade.getInstance().accesso(username, password)) {
+			hitCount = 0;
 			session.setAttribute("username", username);
 			Cookie cookie = new Cookie("username", username);
 			cookie.setMaxAge(5000);
 			response.addCookie(cookie);
-			hitCount = 0;
 			response.sendRedirect("home.jsp");
 
 		} else {
