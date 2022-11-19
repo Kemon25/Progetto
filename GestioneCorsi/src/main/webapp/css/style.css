@@ -12,11 +12,11 @@ html {
 }
 
 #colorHeader {
-	color:#fbd300;
+	color: #ffff00;
 }
 
 #colorLabel{
-	color:#fbd300;
+	color: #ffff00;
 }
 
 .form{
@@ -89,4 +89,8 @@ ul.nav a:hover {
 
 #whiteLabel{
 	color:white;
+}
+
+#id{
+	color:black;
 }

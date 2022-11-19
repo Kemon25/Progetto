@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
 	<div class="btn-group">
 		<button type="button" class="btn btn-2" data-toggle="modal"
 			data-target="#myModal2">Creazione corso</button>
@@ -60,7 +61,7 @@
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-text-width"></i>
 									</span> <input type="text" name="nomeCorso" id="nomeCorso"
-										placeholder="max 30 caratteri, solo lettere" class="form-control" required>
+										placeholder="Max 30 caratteri, solo lettere" class="form-control" required>
 								</div>
 							</div>
 						</div>
@@ -78,14 +79,14 @@
 							</div>
 						</div>
 						<script>
-							$(function() {
-								$('#dp').datepicker({
-									format : 'dd/mm/yyyy',
-									autoclose : true,
-									startDate : '+1d',
-									endDate : '31/12/2050'
-								}).on('changeDate');
-							});
+						$(function() {
+							$('#dp').datepicker({
+								format : 'dd/mm/yyyy',
+								autoclose : true,
+								startDate : '+1d',
+								endDate : '31/12/2050'
+							}).on('changeDate');
+						});
 						</script>
 
 						<div class="form-group">
@@ -119,7 +120,7 @@
 									<span class="input-group-addon"> <i
 										class="glyphicon glyphicon-yen"></i>
 									</span> <input type="text" name="costo" id="costo"
-										placeholder="Costo..." class="form-control" required>
+										placeholder="Max 999999.99" class="form-control" required>
 								</div>
 							</div>
 						</div>

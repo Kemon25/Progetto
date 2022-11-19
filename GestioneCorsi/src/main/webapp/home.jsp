@@ -12,11 +12,6 @@ if (session.getAttribute("username") == null) {
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-td,th {
-	color: #fbd300;
-}
-</style>
 <%@ include file="CDN.html"%>
 <meta charset="ISO-8859-1">
 <title>Home</title>
@@ -31,9 +26,9 @@ td,th {
 		<table class="table table-hover" id="rigata">
 			<thead>			
 				<tr>
-					<th>Nome</th>
-					<th>Cognome</th>
-					<th>Precedenti formativi</th>
+					<th id="colorLabel">Nome</th>
+					<th id="colorLabel">Cognome</th>
+					<th id="colorLabel">Precedenti formativi</th>
 				</tr>
 
 			</thead>
@@ -49,9 +44,9 @@ td,th {
 					}
 				%>
 				<tr>
-					<td><%=c.getNome()%></td>
-					<td><%=c.getCognome()%></td>
-					<td><%=precedenti%></td>
+					<td id="colorLabel"><%=c.getNome()%></td>
+					<td id="colorLabel"><%=c.getCognome()%></td>
+					<td id="colorLabel"><%=precedenti%></td>
 				</tr>
 				<%
 				}
