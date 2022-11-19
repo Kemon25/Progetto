@@ -90,6 +90,11 @@
 						Docente docente = new Docente();
 						for(Corso corso : corsi){
 							docente = AdminFacade.getInstance().getById(corso.getIdDocente());
+							String commenti = new String();
+							if(corso.getCommenti()==null)
+								commenti="";
+							else
+								commenti=corso.getCommenti();
 					%>
 					<tr>
 						<td id="colorLabel"><%=corso.getNomeCorso()%></td>
@@ -97,7 +102,7 @@
 						<td id="colorLabel"><%=df.format(corso.getDataInizio())%></td>
 						<td id="colorLabel"><%=df.format(corso.getDataFine())%></td>
 						<td id="colorLabel"><%=String.format("%.2f", corso.getCosto())%></td>
-						<td id="colorLabel"><%=corso.getCommenti()%></td>
+						<td id="colorLabel"><%=commenti%></td>
 						<td id="colorLabel"><%=corso.getAula()%></td>
 					</tr>
 					<%

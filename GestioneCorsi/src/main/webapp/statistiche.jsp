@@ -27,7 +27,6 @@ else {
 			<h3>Statistiche dei Corsi</h3>
 		</header>
 
-
 		<div id="colorLabel">
 			<p>
 				Numero corsisti totali: <strong> <%=AdminFacade.getInstance().getAllCorsista().size()%>
@@ -35,21 +34,28 @@ else {
 			</p>
 		</div>
 
+<%if(AdminFacade.getInstance().getCorsoMaxFreq().size()>1){ %>
 
+		<h3 id="colorLabel">I corsi pi&ugrave; frequentati sono:</h3>
+		<%}else{ %>
+		<h3 id="colorLabel">Il corso pi&ugrave; frequentato &egrave;:</h3>
+		<%
+		}
+		%>
 		<%
 		for (Corso c : AdminFacade.getInstance().getCorsoMaxFreq()) {
 		%>
 		<div id="colorLabel">
 
-			<p>
-				Il corso pi&ugrave; frequentato &egrave;: <strong> <%=c.getNomeCorso()%>
-				</strong>
-			</p>
+			<h4>
+				<%=c.getNomeCorso()%>
+			</h4>
 
 		</div>
 		<%
 		}
 		%>
+		
 
 		<%
 		DateFormat formato = new SimpleDateFormat("dd-MMM-yyyy");
@@ -64,7 +70,7 @@ else {
 		<div id="colorLabel">
 			<p>
 				Durata media dei corsi: <strong> <%=AdminFacade.getInstance().getMediaCorsi()%>
-				</strong>&nbsp;giorni
+				</strong>&nbsp;giorni lavorativi
 			</p>
 		</div>
 
@@ -95,7 +101,8 @@ else {
 							precedenti = "Si";
 					%>
 					<tr>
-						<td id="colorLabel"><a href="corsista.jsp?idCorsista=<%=c.getId()%>"><%=c.getNome()%></a></td>
+						<td id="colorLabel"><a
+							href="corsista.jsp?idCorsista=<%=c.getId()%>"><%=c.getNome()%></a></td>
 						<td id="colorLabel"><%=c.getCognome()%></td>
 						<td id="colorLabel"><%=precedenti%></td>
 					</tr>
@@ -138,7 +145,8 @@ else {
 
 		<div class="table-responsive">
 
-			<h3 id="colorLabel">Elenco docenti che tengono pi&ugrave; di un corso</h3>
+			<h3 id="colorLabel">Elenco docenti che tengono pi&ugrave; di un
+				corso</h3>
 			<table class="table table-hover" id="rigata">
 				<thead>
 					<tr>
