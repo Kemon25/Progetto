@@ -25,7 +25,7 @@ td,th {
 	<jsp:include page="nav.jsp" />
 	<div class="container">
 		<header class="page-header">
-			<h3 class="colorLabel">Lista corsisti</h3>
+			<h3 id="colorLabel">Lista corsisti</h3>
 		</header>
 
 		<div class="table-responsive">
